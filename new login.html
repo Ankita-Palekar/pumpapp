@@ -2,12 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs-Sign In</title>
+	<title>PUMP!- Share your URLs-Sign In</title>
 <link rel="stylesheet" type="text/css" href="assets/bootstrap/bootstrap/css/bootstrap.min.css">
 <script type="text/javascript" src="jquery.js"></script>
 
 <style type="text/css">
-
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
 		h1{	text-align: center;
 	margin-top: 0;
@@ -68,16 +69,21 @@
         margin-right: 5px;
         position: relative;
         left: 250px;
+
       }
       .a1{
-        margin-left: 10px;
+        margin-top: 7px;
+       font-family: 'Exo', sans-serif;
+      }
+      .form-signin-heading{ 
+           font-family: 'Exo', sans-serif;
       }
     </style>
 
 </head>
 <body>
 <heading >
-<h1>Pump!</br><small>
+<h1>PUMP!</br><small>
 Share your URLs</small></h1>
 </heading>
 <section>
@@ -90,10 +96,18 @@ Share your URLs</small></h1>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button class="btn btn-default btn-primary" type="submit">Sign In</button>
+        <!-- <button class="btn btn-default btn-primary" type="submit">Sign In</button>
       <button class="btn btn-default btn-primary a1" type="submit">Sign Up</button>
-      </form>
+      <button class="btn btn-default btn-primary a2" type="submit">Sign Up with Facebook</button> -->
 
+      <div class="btn-group">
+    <button type="button" class="btn btn-default btn-primary">Sign In</button>
+    <button type="button" class="btn btn-default btn-primary">Sign Up</button>
+   
+</div>
+       <button type="button" class="btn btn-default a1 btn-primary">Sign Up with Facebook</button>
+      </form>
+<p><span class="glyphicon glyphicon-user"></span></p>
     </div>
 
 
@@ -108,3 +122,4 @@ Share your URLs</small></h1>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
+
