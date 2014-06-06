@@ -5,6 +5,7 @@
 	<title>Pump!- Share your URLs</title><!-- 
 	<link rel="stylesheet" type="text/css" href="styleSheet.css">
  --><link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="assets/css/jasny-bootstrap.min.css">
 <style type="text/css">
 
 
@@ -20,7 +21,16 @@ nav{
 	padding-left: 10px;
 	padding-right: 10px;
 }
+.information{
+    width: 800px;
+float: left;
+padding-top: 10px;
+}
+#profilePic{
+    padding-left: 20px;
+}
 
+    
 </style>
 
 
@@ -37,6 +47,7 @@ nav{
             <li ><a href="index.html">List</a></li>
             <li class="active"><a href="profile.html">Profile</a></li>
             <li ><a href="groups.html">My Groups</a></li>
+            <li><a href="archive.html">Archive</a></li>
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
@@ -52,7 +63,7 @@ nav{
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="signin.html">LogOut</a></li>
+            <li><a href="newLogin.html">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
@@ -62,21 +73,74 @@ nav{
     </div>
 </nav>
 
+
 <div class="container">
    
         <div class="col-xs-3">
-            <a href="#" class="thumbnail">
-                <img src="back.jpg" alt="125x125">
-            </a>
-        </div>
+
+<div class="fileinput fileinput-new" data-provides="fileinput">
+  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+    <img src="back.jpg" alt="Profile Pic">
+  </div>
+  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+  <div>
+    <span class="btn btn-success btn-file"><span class="fileinput-new">Select image</span>
+    <span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+    <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
+  </div>
+</div>
+
 
 </div>
+
 <div class="information">
-
+<dl class="dl-horizontal well">
+  <dt id="profileTagName">Name</dt>
+  <dd id="profileName">Name Of The person</dd>
+  <dt id="empOrg">Organisation</dt>
+  <dd id="organisation">Organisation Of The person</dd>
+  <dt id="empRole">Role</dt>
+  <dd id="Role">Role Of the Person</dd>
+<dt id="empDes">Designation</dt>
+  <dd id="designation">Designation Of The person</dd></br>
+<p id="groupPart"><strong>Groups you are a part Of:</strong></dt>
+<div class="bs-example">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Group Name</th>
+          <th>Created By</th>
+          <th>Number Of Members</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Software Developers</td>
+          <td>Ankit</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</dl>
 
 
 </div>
-
+</div>
 
 
 
@@ -84,6 +148,7 @@ nav{
 <div id="assets">
 	<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/jasny-bootstrap.min.js"></script>
 
 </div>
 </body>
