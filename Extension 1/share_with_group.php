@@ -10,13 +10,13 @@
     
     // Perform Update
 
-
     $query="select group_name from groups";
 
     $result = mysqli_query($connection, $query);
 
     if ($result) {
       // Success
+  
       $output="<ul>";
       foreach($result as $value)
       {

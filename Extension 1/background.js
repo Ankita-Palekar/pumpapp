@@ -9,7 +9,7 @@ function sendCurrentURL(url) {
             }
         }
     });
-    req.open("POST", "http://localhost/Extension 1/save.php", true);
+    req.open("POST", "http://localhost/pumpapp/Extension 1/save.php", true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     req.send("url=" + encodeURIComponent(url));
 }

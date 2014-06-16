@@ -25,7 +25,7 @@ $("document").ready(function(){
 //  alert("showing Groups");
 var data="Success";
    var trial = $.ajax({
-   url: "http://localhost/Extension 1/share_with_group.php",
+   url: "http://localhost/pumpapp/Extension 1/share_with_group.php",
    type: "GET",
     success: function(data){
       $("#update").append(data);

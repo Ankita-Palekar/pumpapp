@@ -5,18 +5,19 @@ $("#save").click(function(){
 // var url="multi";
 //    alert(url);
      chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-   var  url = tabs[0].url; 
+   var  murl = tabs[0].url; 
 
 
-alert(url);
+alert(murl);
 var max=30;//keep this filled and try to use post method on url
 
   var jxhr= $.ajax({ 
     type:"POST",
-    url:"http://localhost/Extension 1/save.php",
-    data:max,
+    url:"http://localhost/pumpapp/Extension 1/save.php",
+    data:"url="+murl,
     success:function(data){
       console.log(data);
+
     }
 });
 // //doSomething();
@@ -32,7 +33,7 @@ $("#shareg").click(function(){
 //  alert("showing Groups");
 
    $.ajax({
-   url: "http://localhost/Extension 1/share_with_group.php",
+   url: "http://localhost/pumpapp/Extension 1/share_with_group.php",
     success: function(data){
         console.log(data);  
           }
