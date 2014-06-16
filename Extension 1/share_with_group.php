@@ -5,7 +5,7 @@
 
 <?php
 
-
+  
   if (empty($errors)) {
     
     // Perform Update
@@ -20,8 +20,10 @@
       $output="<ul>";
       foreach($result as $value)
       {
-      $output.="<li><a href=\"#\" class=\"list-group-item\">";
+      $output.="<li>";
         foreach ($value as $item) { 
+           $output.= "<a href class=\"list-group-item\"";
+            $output.=" id=\"$item\">";
           $output.= "$item"; 
           }
           $output.="</a>";
