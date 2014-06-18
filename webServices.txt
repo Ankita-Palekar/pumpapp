@@ -1,0 +1,6 @@
+create user
+login
+creating groups
+sharing
+notification
+visited

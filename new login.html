@@ -107,7 +107,7 @@ Share your URLs</small></h1>
 
       <div class="btn-group">
     <button type="button" class="btn a2 btn-default btn-primary">Sign In</button>
-    <button type="button" class="btn a2 btn-default btn-primary">Sign Up</button>
+    <button type="button" id="sign_up" class="btn a2 btn-default btn-primary">Sign Up</button>
    
 </div>
        <button type="button" class="btn btn-default a1 btn-primary"><span class="glyphicon glyphicon-user">   </span>Sign Up with Facebook</button>
@@ -125,7 +125,12 @@ Share your URLs</small></h1>
 
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$("#sign_up").click(function(){
+  window.location.href="http://localhost/pumpapp/signUp.php";
+});
 
+</script>
 </div>
 </body>
 </html>
