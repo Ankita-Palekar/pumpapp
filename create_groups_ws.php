@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,4 +189,3 @@ var url="<?php echo $url; ?>";
 </html>
 
 
-<!-- http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/createGroup;groupName=xyz;AdminID=1;UserIDs=2,3,4,5,6; -->

@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Page Saved Successfully</title>
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
+<style type="text/css">
+body{
+	text-align: center;
+  
+	width: 350px;
+	height: 150px;
+	background-color: #f5f5f5;
+}
+h1{
+	font-size: 20px;
+}
+
+</style>
+</head>
+<body>
+<h1>Your page has been recognised Successfully!</h1>
+<p>Add your tags or just click save if you dont want any!</p> 
+<a href="../index.php">Go to Pump  </a>  |  <a id= "clicked" href="../remove.php">Remove page</a>
+_____________________________________
+</br></br>
+
+  <div class="col-lg-6">
+    <div class="input-group">
+
+      <input type="text" value=" " data-role="tagsinput" placeholder="Add tags" />
+      <span class="input-group-btn">
+        <button id="save_tags" class="btn btn-danger" type="button" name="save">Save Tags</button></br></br>
+      </span>
+    </div>
+  </div>
+
+
+<script src="jquery.js" type="text/javascript"></script>
+<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="myScript.js" type="text/javascript"></script>
+</body>
+</html>
