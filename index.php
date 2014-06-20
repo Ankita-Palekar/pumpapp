@@ -229,7 +229,7 @@ $(".col-sm-3").animate({  marginRight : "-=180px"}, 500,"linear");
 <?php
 if(isset($_POST["create"])){
   echo $_POST["tags"];
-$link=$_POST["link_url"];
+$link=urlencode($_POST["link_url"]);
 $tags=$_POST["tags"];
 $url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL=";
 $url.=$link;

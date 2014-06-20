@@ -15,21 +15,20 @@ $("#save_tags").click(function(){
 //keep this filled and try to use post method on url
 var tags=$("input").val();
 var url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL="+curl+";tags="+tags+";";
-//alert(url);
+alert(url);
+var max="ankit";
  $.ajax({ 
     type:'GET',
     url:url,
-    dataType:'jsonp',
+    data: max,
+    // dataType:'jsonp',
     success:function(data){
       console.log(data);
     },
     error:function(data){
       console.log("oh no!");
-    },
-
-window.location.href=url
-});
-
+     }
+ });
 });
 });
 

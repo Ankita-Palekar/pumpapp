@@ -21,7 +21,7 @@
       "js": ["jquery.js", "myScript.js"]
     }
   ],
-
+  
   "permissions":["tabs"]	
 
 }
