@@ -52,7 +52,7 @@ nav{
         <label for="link_url">Put URL here:</label>
         <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link">
          <label for="tags">Tags</label>
-         <input type="text" name="tags" value="" data-role="tagsinput" placeholder="Add User E-mail id here, and press enter for next user"/>
+         <input type="text" name="tags" value="" data-role="tagsinput" placeholder="Add your first tag here, and press enter for next tag"/>
     <button type="submit" name="create" class="btn btn-primary cr">Save</button>
 </form>
 </div>
