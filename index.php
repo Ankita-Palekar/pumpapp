@@ -45,19 +45,50 @@ nav{
 
 
  <heading>
+
   <div class="row">
-    <div class="col-md-4">
-      <form action="index.php"  class="well" method=POST>
-    
-        <label for="link_url">Put URL here:</label>
-        <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link">
-         <label for="tags">Tags</label>
-         <input type="text" name="tags" value="" data-role="tagsinput" placeholder="Add your first tag here, and press enter for next tag"/>
-    <button type="submit" name="create" class="btn btn-primary cr">Save</button>
-</form>
-</div>
+
 <h1>Pump!</br><small>Share your URLs</small></h1>
 </div></heading>
+<div class="row">
+    <div class="col-md-1">
+     <button class="btn btn-default plus-sign" data-toggle="modal" title="Add new link" data-target=".add_url_modal">
+        <span class="glyphicon glyphicon-plus-sign">
+       </span>
+      </button>
+
+
+<div class="modal fade add_url_modal" tabindex="+1" role="dialog" >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Save your URL</h4>
+      </div>
+      <div class="modal-body">
+        
+     <form action="index.php" method=POST>
+    
+        <label for="link_url">Put URL here:</label>
+        <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required>
+
+         <label for="tags">Tags</label></br>
+         <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
+    
+        <button type="submit" name="create" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </form>
+      </div>
+     
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div></div>
+
 <nav role="navigation" class="navbar navbar-inverse">
 
     <div id="navbarCollapse" class="collapse navbar-collapse">
