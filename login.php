@@ -68,9 +68,8 @@ Share your URLs</small></h1>
         <label for="password">Password:</label>
         <input type="password" name="password"  placeholder="Password" required></br></br>
 		<button type="submit" name="submit" id="sign_in" class="btn a2 btn-default btn-primary">Sign In</button>
-	
-        <button type="submit" name="submit" id="sign_up" class="btn a2 btn-default btn-primary">Sign Up</button>
-	
+	 <button id="home" class="btn btn-danger" onclick="location.href='welcome.php'">Home Page</button>
+    
         </form>
 
     </div>
@@ -94,7 +93,7 @@ $url.=";password=";
 $url.=$pw;
 $url.=";";
 
-echo $url;
+//echo $url;
 }
 ?>
 <script type="text/javascript" src="jquery.js"></script>

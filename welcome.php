@@ -9,6 +9,20 @@
 	text-align: center;
 	border: 1px solid gray;
 }
+.description{
+text-align: center;
+}
+body{
+	/*background-color: #ffffcc;*/
+	background: url('waves.jpg');
+	padding: 20px;
+}
+
+#lower{
+	text-align: center;
+	
+}
+
 </style>
 </head>
 
@@ -22,9 +36,42 @@
 
 </div>
 <div id="description">
-
-<img src="tablet2.jpg" alt="Various viewing devices" width="1000" height="850">
+	<div id="row">
+		<div class="col-md-6">
+</br></br></br></br></br></br></br></br></br>
+<h2>Access any page on the go!
+It doesn't matter where you are, or what device you are using! Always have your documents with you!</h2></div>
 </div>
+<div class="col-md-6">		
+<img src="tablet2.jpg" alt="Various viewing devices" width="600" height="500">
+</div>
+
+
+<div id="row">
+
+<div class="col-md-6">		
+<img src="friends.jpg" alt="Various viewing devices" width="550" height="400">
+</div>
+
+<div class="col-md-6">
+</br></br></br></br></br></br></br></br></br>	
+<h2>Now share whatever you like with your friends too.
+No need of facebook or google. Share from PUMP directly!</h2>
+
+</div>
+</div>
+
+</div>
+<div id="lower" class="row"></br>
+<div class="col-md-12">
+</br></br></br></br></br></br></br></br></br>	<hr>
+<h2>Pump!-Share Your URLs<h2>
+<h3>A Helix Tech Product</h3>
+
+</div>
+</div>
+
+
 
 <div id="assets">
 <script type="text/javascript" src="jquery.js"></script>

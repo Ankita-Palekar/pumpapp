@@ -62,10 +62,9 @@ Share your URLs</small></h1>
         <label for="emailID">E-mail ID:</label>
         <input type="email" name ="emailID" placeholder="Email address" required></br>
         <label for="password">Password:</label>
-        <input type="password" name="password"  placeholder="Password" required></br>
-
-        <button type="submit" name="submit" id="sign_up" class="btn a2 btn-default btn-primary">Sign Up</button>
-	
+        <input type="password" name="password"  placeholder="Password" required></br></br>
+          <button type="submit" name="submit" id="sign_up" class="btn a2 btn-default btn-success">Sign Up</button>
+     <button id="home" class="btn btn-danger" onclick="location.href='welcome.php'">Home Page</button>
         </form>
 
     </div>
@@ -79,8 +78,6 @@ Share your URLs</small></h1>
 
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-
-
 </div>
 <?php
 if(isset($_POST["submit"])){
