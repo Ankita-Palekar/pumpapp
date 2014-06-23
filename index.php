@@ -11,17 +11,14 @@
 
 body{
 	background: url("bg.jpg");
+  /*background-color: #D4D4D4;*/
 }
 
 h1{
 	text-align: center;
 
 }
-nav{
-	padding-left: 10px;
-	padding-right: 10px;
-}
-.row{
+.nav{
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -33,7 +30,9 @@ nav{
 	border-bottom: 2px solid gray;
 }
 
-
+.myData{
+  padding-left: 200px;
+}
 
 </style>
 
@@ -50,7 +49,8 @@ nav{
 
 <h1>Pump!</br><small>Share your URLs</small></h1>
 </div></heading>
-<div class="row">
+
+<div id ="options" class="row">
     <div class="col-md-1">
      <button class="btn btn-default plus-sign" data-toggle="modal" title="Add new link" data-target=".add_url_modal">
         <span class="glyphicon glyphicon-plus-sign">
@@ -124,6 +124,7 @@ nav{
 
 
 <div class="row">
+  <div class="myData">
   <div id="p1-imp" class="col-sm-3 col-sm-3">
     <div class="thumbnail">
       <div class="caption">
@@ -226,7 +227,7 @@ nav{
 
 
 
-</div>
+</div></div>
 
 <section id="savedPages">
 <article id="page1">
