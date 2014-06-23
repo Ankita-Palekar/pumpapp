@@ -10,14 +10,19 @@
 
 
 body{
-	background: url("bg.jpg");
+	background: url("bluebg.jpg");
   /*background-color: #D4D4D4;*/
 }
 
 h1{
 	text-align: center;
-
+border: 2px solid black;
+background-color: white;
+width: 400px;
+margin-left: 450px;
+opacity: 0.7;
 }
+
 .nav{
 	padding-left: 10px;
 	padding-right: 10px;
@@ -112,7 +117,7 @@ h1{
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="newLogin.html">LogOut</a></li>
+            <li><a href="welcome.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
@@ -129,9 +134,8 @@ h1{
     <div class="thumbnail">
       <div class="caption">
         <h3>Page name</h3>
-    <p class="pageContent">The content of the page. For example,Images are very common in modern web design. So styling images and placing it properly on the web pages is very important for improving the user experience.Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
-    <p>The image from thumbalizr comes here.
-    </p>
+    <p class="pageContent">The content of the page. So styling images and placing it properly on the web pages is very important for improving the user experience.Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
+    
   <p >
      <button type="button" class="btn btn-default plus" data-toggle="tooltip" data-placement="top" title="Archive this page">
         <span class="glyphicon glyphicon-plus">
@@ -162,10 +166,9 @@ h1{
     <div  class="thumbnail">
       <div class="caption">
         <h3>Page name</h3>
-                <p class="pageContent">The content of the page. For example,Images are very common in modern web design. So styling images and placing it properly on the web pages is very important for improving the user experience.
+                <p class="pageContent">The content of the page. So styling images and placing it properly on the web pages is very important for improving the user experience.
                   Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
-                    <p>The image from thumbalizr comes here
-                         </p>
+                
         <p><button type="button" class="btn btn-default plus" data-toggle="tooltip" data-placement="top" title="Archive this page">
         <span class="glyphicon glyphicon-plus">
         </span>
@@ -196,10 +199,9 @@ h1{
     <div  class="thumbnail">
       <div class="caption">
         <h3>Page name</h3>
-                <p class="pageContent">The content of the page. For example,Images are very common in modern web design. So styling images and placing it properly on the web pages is very important for improving the user experience.
+                <p class="pageContent">The content of the page. So styling images and placing it properly on the web pages is very important for improving the user experience.
                   Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
-                    <p>The image from thumbalizr comes here
-                         </p>
+                    
         <p><button type="button" class="btn btn-default plus" data-toggle="tooltip" data-placement="top" title="Archive this page">
         <span class="glyphicon glyphicon-plus">
         </span>

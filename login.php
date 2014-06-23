@@ -93,7 +93,6 @@ $url.=";password=";
 $url.=$pw;
 $url.=";";
 
-//echo $url;
 }
 ?>
 <script type="text/javascript" src="jquery.js"></script>

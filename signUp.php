@@ -17,7 +17,7 @@
       body{
       	background-color: #f5f5f5;
       
-      background-image: url('bg.jpg');
+      background-image: url('waves.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       opacity: 0.9;
@@ -33,15 +33,18 @@
         width: 450px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
+        /*background-color: #fff;*/
+        /*border: 1px solid #000;*/
        
       }
      
       
-      .container{
+      .well{
+        margin-top: 50px;
+        margin-left: 375px;
         text-align: center;
-
+        width: 600px;
+        border: 1px solid black;
       }
      
       h1{
@@ -56,7 +59,7 @@
 Share your URLs</small></h1>
 </heading>
 <section>
-<div class="container">
+<div class="well">
       <form method=POST action="signUp.php" class="form-signin">
         <h2 class="form-signin-heading">Sign Up!</h2>
         <label for="emailID">E-mail ID:</label>
