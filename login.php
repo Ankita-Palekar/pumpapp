@@ -97,11 +97,7 @@ $url.=";";
 ?>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$("#sign_up").click(function(){
-  window.location.href="http://localhost/pumpapp/signUp.php";
-});
-</script>
+
 <script type="text/javascript">
 <?php if(isset($_POST["submit"])){?> 
 
@@ -116,9 +112,9 @@ $("document").ready(function(){
     url: url,                                                                                                                                              
     dataType: 'jsonp',                                                                                                                                                                                                
     success: function() { console.log('Success!');
-    	
+    	window.location.href="index.php";
      },                                                                                                                                                                                       
-    error: function() { console.log('Uh Oh!'); }                                                                                                                           
+    error: function() { console.log('Uh Oh!'); window.location.href="index.php";}                                                                                                                           
 })
 
 

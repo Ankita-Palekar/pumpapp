@@ -55,8 +55,13 @@ opacity: 0.7;
 <h1>Pump!</br><small>Share your URLs</small></h1>
 </div></heading>
 
-<div id ="options" class="row">
-    <div class="col-md-1">
+
+
+<nav role="navigation" class="navbar navbar-inverse">
+
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li>  <div class="col-md-6">
      <button class="btn btn-default plus-sign" data-toggle="modal" title="Add new link" data-target=".add_url_modal">
         <span class="glyphicon glyphicon-plus-sign">
        </span>
@@ -92,26 +97,12 @@ opacity: 0.7;
 
 
 
-</div></div>
-
-<nav role="navigation" class="navbar navbar-inverse">
-
-    <div id="navbarCollapse" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">List</a></li>
+</div></li>
+            <li class="active"><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="groups.html">My Groups</a></li>
-            <li><a href="archive.html">Archive</a></li>
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
-                <ul role="menu" class="dropdown-menu">
-                    <li><a href="#">Inbox</a></li>
-                    <li><a href="#">Drafts</a></li>
-                    <li><a href="#">Sent Items</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Trash</a></li>
-                </ul>
-            </li>
+            <li><a href="archive.php">Archive</a></li>
+           
         </ul>
         
 

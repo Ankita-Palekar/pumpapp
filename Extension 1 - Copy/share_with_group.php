@@ -18,7 +18,7 @@
       {
       $output.="<li>";
         foreach ($value as $item) { 
-           $output.= "<button class=\"btn btn-default\"";
+           $output.= "<button type=\"button\" class=\"btn btn-default\"";
             $output.=" id=\"$item\">";
           $output.= "$item"; 
           }

@@ -37,7 +37,17 @@
         /*border: 1px solid #000;*/
        
       }
-     
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="email"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
       
       .well{
         margin-top: 50px;
@@ -109,11 +119,10 @@ $("document").ready(function(){
     url: url,                                                                                                                                              
     dataType: 'jsonp',                                                                                                                                                                                                
     success: function() { console.log('Success!');
-    	$.getJSON(url, null, function () {
-        alert('Cross domain JS call achieved. Have your implementation going in here!');});
-
+    	window.location.href="profile.php";
      },                                                                                                                                                                                       
-    error: function() { console.log('Uh Oh!'); }                                                                                                                           
+    error: function() { console.log('Uh Oh!'); 
+      window.location.href="profile.php";}                                                                                                                           
 })
 
 

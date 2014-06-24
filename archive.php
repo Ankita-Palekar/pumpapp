@@ -100,8 +100,8 @@ nav{
 </div></li>
             <li><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li class="active"><a href="groups.html">My Groups</a></li>
-            <li><a href="archive.php">Archive</a></li>
+            <li ><a href="groups.html">My Groups</a></li>
+            <li class="active"><a href="archive.php">Archive</a></li>
                   </ul>
         
 
@@ -117,26 +117,9 @@ nav{
     </div>
 </nav>
 
-
-<div class="row">
-  <div class="col-sm-2">
-    <div class="sidebar-nav">
-      <div class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Software Developers<span class="badge right">25</span></a></li>
-            <li><a href="#">Group 2 <span class="badge right">11</span></a></li>
-            <li><a href="#">Group 3 <span class="badge right">2</span></a></li>
-            <li><a href="#">Group 4 <span class="badge right">5</span></a></li>
-            <li><a href="#">Group 5 <span class="badge right">5</span</a></li>
-            <li><a href="create_groups_ws.php">Create Group <span class="glyphicon glyphicon-plus-sign right"></span</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-9 well">
-   <p> The various groups you are a part of are here.</p>
+        
+  <div class="col-sm-12 well">
+   <h1> Sorry This link is broken!</h1>
   </div>
 </div> 
 

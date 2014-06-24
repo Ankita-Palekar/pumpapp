@@ -1,10 +1,3 @@
-$(window).load(function(){
-
-  
-
-});
-
-
 $("document").ready(function(){
 
 var data="Success";
@@ -15,13 +8,17 @@ var data="Success";
       $("#update").append(data);
       $('.loader').fadeOut(-1000);
       $('body').css('background', '#f5f5f5');
+      $("button").click(function(){
+       	$(this).replaceWith("<button type=\"button\" class=\"btn btn-labeled btn-success\"><span class=\"btn-label\"><i class=\"glyphicon glyphicon-ok\"></i></span>Shared</button>");
+       })
+
+
+
           }
 
 });
 
 
-$("button").click(function(){
-alert("hello");
-});
+
 
 });

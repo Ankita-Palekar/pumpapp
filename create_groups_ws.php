@@ -72,26 +72,54 @@ nav{
 
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ><a href="index.html">List</a></li>
-            <li><a href="profile.html">Profile</a></li>
+          <li>  <div class="col-md-6">
+     <button class="btn btn-default plus-sign" data-toggle="modal" title="Add new link" data-target=".add_url_modal">
+        <span class="glyphicon glyphicon-plus-sign">
+       </span>
+      </button>
+
+
+<div class="modal fade add_url_modal" tabindex="+1" role="dialog" >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Save your URL</h4>
+      </div>
+      <div class="modal-body">
+        
+     <form action="index.php" method=POST>
+    
+        <label for="link_url">Put URL here:</label>
+        <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required>
+
+         <label for="tags">Tags</label></br>
+         <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
+    
+        <button type="submit" name="create" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </form>
+      </div>
+     
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div></li>
+            <li><a href="index.php">List</a></li>
+            <li><a href="profile.php">Profile</a></li>
             <li class="active"><a href="groups.html">My Groups</a></li>
-            <li><a href="archive.html">Archive</a></li>
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
-                <ul role="menu" class="dropdown-menu">
-                    <li><a href="#">Inbox</a></li>
-                    <li><a href="#">Drafts</a></li>
-                    <li><a href="#">Sent Items</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Trash!</a></li>
-                </ul>
-            </li>
+            <li><a href="archive.php">Archive</a></li>
+           
         </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="newLogin.html">LogOut</a></li>
+            <li><a href="welcome.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
@@ -100,7 +128,6 @@ nav{
         </form>
     </div>
 </nav>
-
 
 
 <div class="row">
@@ -146,6 +173,12 @@ nav{
     <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$("li").click(function(){
+    $(this).siblings(".active").removeClass("active");
+    $(this).addClass("active");
+});
+</script>
 </div>
 
 <?php
