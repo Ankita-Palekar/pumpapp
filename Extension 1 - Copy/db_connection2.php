@@ -14,7 +14,7 @@
     );
   }
   else{
-    echo "connected";
+  //  echo "connected";
   }
 
 

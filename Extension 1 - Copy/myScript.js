@@ -47,7 +47,7 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
    var  curl = tabs[0].url;  
    var safe_curl=encodeURIComponent(curl);
    var userID=1;
-   alert(curl);
+  // alert(curl);
 var url="http://localhost/pumpapp/Extension%201%20-%20Copy/remove.php";
  $.ajax({ 
     type:'POST',
@@ -67,6 +67,19 @@ var url="http://localhost/pumpapp/Extension%201%20-%20Copy/remove.php";
 });
 
 
+});
+
+$("#shareg").click(function(){
+   $.ajax({
+   url: "http://localhost/pumpapp/Extension%201%20-%20Copy/share_with_group.php",
+    success: function(data){
+        console.log(data);  
+          }
+     
+
+  });
+
+  window.location.href="share_with_group.html" ;
 });
 
 

@@ -1,16 +1,12 @@
-<?php require_once("session.php"); ?>
-<?php require_once("db_connection.php"); ?>
-
-
+<?php require_once("db_connection2.php"); ?>
 
 <?php
 
-  
   if (empty($errors)) {
     
     // Perform Update
 
-    $query="select group_name from groups";
+    $query="select group_name from Groups";
 
     $result = mysqli_query($connection, $query);
 
@@ -22,11 +18,11 @@
       {
       $output.="<li>";
         foreach ($value as $item) { 
-           $output.= "<a href class=\"list-group-item\"";
+           $output.= "<button class=\"btn btn-default\"";
             $output.=" id=\"$item\">";
           $output.= "$item"; 
           }
-          $output.="</a>";
+          $output.="</button>";
         $output.="</li>";
       }
         $output.="</ul>";
