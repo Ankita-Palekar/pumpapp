@@ -42,6 +42,33 @@ $("#main_page").click(function(){
 
 });
 
+$("#remove").click(function(){
+chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+   var  curl = tabs[0].url;  
+   var safe_curl=encodeURIComponent(curl);
+   var userID=1;
+   alert(curl);
+var url="http://localhost/pumpapp/Extension%201%20-%20Copy/remove.php";
+ $.ajax({ 
+    type:'POST',
+    url:url,
+   data:{url: curl, id: userID} ,
+    // dataType:'jsonp',
+    success:function(data){
+      console.log(data);
+
+      window.location.href="removed.html";
+    },
+    error:function(data){
+      console.log("oh no!");
+      window.location.href="changer.html";
+     }
+ });
+});
+
+
+});
+
 
 
 });

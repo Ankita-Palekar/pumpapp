@@ -1,27 +1,27 @@
-<?php require_once("session.php"); ?>
-<?php require_once("db_connection.php"); ?>
+<?php require_once("db_connection2.php"); ?>
 
 <?php
-$url=urldecode($_POST["url"]);
-
+$url=$_POST["url"];
+//$id=$_POST["id"];
+//$url="www.google.co.in";
 if (empty($errors)) {
     
-    // Perform Update
 
-
-    $query="delete from LINKS where link_url=";
-    $query.="'$url'";
+   $query="delete from links where link_url='$url' and user_id=1 ;";
+    
+ // $query="insert into links (user_id, link_url) values ($id, $url); ";
 
     $result = mysqli_query($connection, $query);
 
     if ($result) {
       // Success
       echo "Awesome";
-      $_SESSION["message"] = "Page updated.";
+      //$_SESSION["message"] = "Page updated.";
 
     } else {
       // Failure
-      $_SESSION["message"] = "Page update failed.";
+      echo "fail";
+      //$_SESSION["message"] = "Page update failed.";
     }
   
   }
