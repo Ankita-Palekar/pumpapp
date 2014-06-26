@@ -28,7 +28,7 @@ opacity: 0.7;
 	padding-right: 10px;
 }
 .thumbnail{
-  float: left;
+  margin-left: 10px;
 	text-align: center;
 }
 .pageContent{
