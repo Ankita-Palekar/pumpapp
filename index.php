@@ -38,6 +38,18 @@ opacity: 0.7;
 .myData{
   padding-left: 200px;
 }
+.crop {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 500px;
+    height: 500px;
+    margin: 0px 0 -40px -60px;
+}
+
 
 </style>
 
@@ -100,7 +112,7 @@ opacity: 0.7;
 </div></li>
             <li class="active"><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li><a href="groups.html">My Groups</a></li>
+            <li><a href="groups_ws.php">My Groups</a></li>
             <li><a href="archive.php">Archive</a></li>
            
         </ul>
@@ -119,7 +131,7 @@ opacity: 0.7;
 </nav>
 
 
-<div class="row">
+<!-- <div class="row">
   <div class="myData">
   <div id="p1-imp" class="col-sm-3 col-sm-3">
     <div class="thumbnail">
@@ -215,19 +227,14 @@ opacity: 0.7;
       </button></p>
       </div>
     </div>
-  </div>
+  </div> -->
+
+<?php require_once("get_links.php");?>
+
+<!-- 
+</div></div> -->
 
 
-
-
-</div></div>
-
-<section id="savedPages">
-<article id="page1">
-
-</article>
-
-</section>
 
 <div id="assets">
 	<script type="text/javascript" src="jquery.js"></script>
@@ -246,7 +253,7 @@ $(".trash").click(function(){
   var removal=$(this).parent().parent().parent();
   removal.remove();
 
-$(".col-sm-3").animate({  marginRight : "-=180px"}, 500,"linear");
+//$(".col-sm-3").animate({  marginRight : "-=180px"}, 500,"linear");
 
 });
 
@@ -273,7 +280,7 @@ var url="<?php echo $url; ?>";
   $.ajax({                                                                                                                                                                                                        
     type: 'GET',                                                                                                                                                                                                 
     url: url,                                                                                                                                              
-    dataType: 'jsonp',                                                                                                                                                                                                
+  dataType: 'jsonp',                                                                                                                                                                                                
     success: function() { console.log('Success!');
      },                                                                                                                                                                                       
     error: function() { console.log('Uh Oh!'); }                                                                                                                           

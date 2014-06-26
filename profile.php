@@ -1,6 +1,6 @@
 <?php 
 require_once("db_connection2.php");
-$user_id=2;
+$user_id=8;
 ?>
 <!DOCTYPE html>
 <html>
@@ -144,7 +144,7 @@ padding-top: 10px;
   				}
   			
   			}
-  			// $output="/p";
+        
   			echo $output;
   		}else
   		{

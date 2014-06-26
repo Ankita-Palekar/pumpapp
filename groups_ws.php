@@ -199,13 +199,9 @@ font-weight: bold;
       <div class="navbar navbar-inverse" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Software Developers<span class="badge right">25</span></a></li>
-            <li><a href="#">Group 2 <span class="badge right">11</span></a></li>
-            <li><a href="#">Group 3 <span class="badge right">2</span></a></li>
-            <li><a href="#">Group 4 <span class="badge right">5</span></a></li>
-            <li><a href="#">Group 5 <span class="badge right">5</span</a></li>
-            <li class='active'><a href="#">Create Group <span class="glyphicon glyphicon-plus right"></span</a></li>
-          </ul>
+            <?php require_once("get_groups.php") ?>
+             <li><a href="create_groups_ws.php">Create Group <span class="glyphicon glyphicon-plus right"></span</a></li>
+             </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -243,9 +239,6 @@ $("li").click(function(){
     $(this).addClass("active");
 });
 
-$('#create.am').click(function(){
-    this.popover()
-});
 </script>
 </div>
 </body>
