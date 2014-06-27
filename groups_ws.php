@@ -98,7 +98,7 @@ nav{
 }
 .hh{
   margin-left: 25px;
-  color:grey;
+  color:gray;
 ;
 font-family: 'Exo', sans-serif;
 font-weight: bold;

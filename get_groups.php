@@ -17,10 +17,10 @@
      
         foreach ($value as $item) { 
           // SESSION["message"] = "Page updated.";
-          $output="<li><a href=\"#\">";
+          $output="<li><button class=\"btn btn-default btn-xs\">";
           $output.=$item;
           //$output.="<span class=\"badge right\">25</span>";
-          $output.="</a></li>";
+          $output.="</button>-<a href=\"#\">View Members</a></li></br>";
           echo $output;
        }
      }

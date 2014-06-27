@@ -4,39 +4,26 @@
 
   if (empty($errors)) {
     
-    // Perform Update
+    $selected_group=$_POST["id"];
 
-    $query="select group_name from Groups";
+    $query="select groups_id from Groups where group_name like";
+    $query.="'$selected_group'";
 
     $result = mysqli_query($connection, $query);
-
+    //$output="hi!";
     if ($result) {
       // Success
-  
-      $output="<ul>";
-      foreach($result as $value)
-      {
-      $output.="<li>";
-        foreach ($value as $item) { 
-           $output.= "<button type=\"button\" class=\"btn btn-default\"";
-            $output.=" id=\"$item\">";
-          $output.= "$item"; 
-          }
-          $output.="</button>";
-        $output.="</li>";
+     foreach($result as $value)
+     {
+      foreach ($value as $show) {
+        $output=$show;
       }
-        $output.="</ul>";
-        }
-        else
-        {
-         $output= "You have not saved any links yet.";
-        }
-
-        echo $output;
-
+     
+   };
+   echo $output;
      // $_SESSION["message"] = "Page updated.";
 
-       } else {
+       }} else {
       // Failure
        //  $_SESSION["message"] = "Page update failed.";
          echo "failer";
@@ -45,5 +32,3 @@
   
 
 ?>
-
-

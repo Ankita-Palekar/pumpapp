@@ -15,11 +15,15 @@
       // Success
   
      // $output="<ul>";
-      $output="<div class=\"row\">";
+
+
+
+      $output=" <div class=\"row\">";
       foreach($result as $value)
       {
      
         foreach ($value as $item) { 
+        //  require_once("share_modal.php");
             $safe_url=urlencode($item);
             //echo $safe_url;
            $output.=" <div class=\"col-sm-3 col-sm-3\">
@@ -43,6 +47,8 @@
        //    $output.=$title;
     
         // $output.="</button>";
+      
+ 
         $output.="<p><button type=\"button\" class=\"btn btn-default plus\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Archive this page\">
         <span class=\"glyphicon glyphicon-plus\">
         </span>
@@ -56,7 +62,7 @@
         <span class=\"glyphicon glyphicon-share\">
        </span>
       </button>";
-       //require_once("share_modal.php"); 
+      
        $output.= "<button type=\"button\"   class=\"btn btn-default tag\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"edit tags\">
         <span class=\"glyphicon glyphicon-tag\">
         </span>
@@ -80,6 +86,10 @@
         echo $output;
 
      // $_SESSION["message"] = "Page updated.";
+
+
+
+           require_once("share_modal.php"); 
 
        } else {
       // Failure

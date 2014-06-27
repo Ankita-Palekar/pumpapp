@@ -9,18 +9,11 @@
         
      <form action="index.php" method=POST>
     
-        <label for="link_url">Choose which group to share with:</label>
-        <!-- <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required> -->
-
-    <!--      <label for="tags">Tags</label></br>
-         <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
-     -->
-     <ul>
+        <label for="link_url">Choose which group to share with:</label></br>
+      <ul>
    <?php   require_once("get_groups.php");?>
         </ul>
 
-        <button type="submit" name="create" class="btn btn-primary">Share</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </form>
       </div>
      

@@ -131,103 +131,6 @@ opacity: 0.7;
 </nav>
 
 
-<!-- <div class="row">
-  <div class="myData">
-  <div id="p1-imp" class="col-sm-3 col-sm-3">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>Page name</h3>
-    <p class="pageContent">The content of the page. So styling images and placing it properly on the web pages is very important for improving the user experience.Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
-    
-  <p >
-     <button type="button" class="btn btn-default plus" data-toggle="tooltip" data-placement="top" title="Archive this page">
-        <span class="glyphicon glyphicon-plus">
-       </span>
-      </button>
-      <button type="button"  class="btn btn-default star" data-toggle="tooltip" data-placement="top" title="Make Favorite">
-        <span class="glyphicon glyphicon-star">
-        </span>
-      </button> 
-      <button type="button"  class="btn btn-default share" data-toggle="tooltip" data-placement="top" title="Share with friends">
-        <span class="glyphicon glyphicon-share">
-        </span>
-      </button>
-      <button type="button"   class="btn btn-default tag" data-toggle="tooltip" data-placement="top" title="edit tags">
-        <span class="glyphicon glyphicon-tag">
-        </span>
-      </button>
-      <button type="button"   class=" btn btn-default trash" data-toggle="tooltip" data-placement="top" title="Delete from List">
-        <span class="glyphicon glyphicon-trash">
-        </span>
-      </button>
-    </p>
-    </div>
-    </div>
-  </div>
-
-  <div id="p2-imp" class="col-sm-3 col-sm-3">
-    <div  class="thumbnail">
-      <div class="caption">
-        <h3>Page name</h3>
-                <p class="pageContent">The content of the page. So styling images and placing it properly on the web pages is very important for improving the user experience.
-                  Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
-                
-        <p><button type="button" class="btn btn-default plus" data-toggle="tooltip" data-placement="top" title="Archive this page">
-        <span class="glyphicon glyphicon-plus">
-        </span>
-      </button>
-      <button type="button"  class="btn btn-default star" data-toggle="tooltip" data-placement="top" title="Make Favorite">
-        <span class="glyphicon glyphicon-star">
-        </span>
-      </button>
-        <button type="button"  class="btn btn-default share" data-toggle="tooltip" data-placement="top" title="Share with friends">
-        <span class="glyphicon glyphicon-share">
-        </span>
-      </button>
-      <button type="button"   class="btn btn-default tag" data-toggle="tooltip" data-placement="top" title="edit tags">
-        <span class="glyphicon glyphicon-tag">
-        </span>
-</button>
- <button type="button"   class=" btn btn-default trash" data-toggle="tooltip" data-placement="top" title="Delete from List">
-        <span class="glyphicon glyphicon-trash">
-        </span>
-      </button></p>
-      </div>
-    </div>
-  </div>
-
-
-
-<div id="p3-imp" class="col-sm-3 col-sm-3">
-    <div  class="thumbnail">
-      <div class="caption">
-        <h3>Page name</h3>
-                <p class="pageContent">The content of the page. So styling images and placing it properly on the web pages is very important for improving the user experience.
-                  Using the Bootstrap built-in classes you can easily style images such as making the round cornered or circular images, or give them effect like thumbnails.</p>
-                    
-        <p><button type="button" class="btn btn-default plus" data-toggle="tooltip" data-placement="top" title="Archive this page">
-        <span class="glyphicon glyphicon-plus">
-        </span>
-      </button>
-      <button type="button"  class="btn btn-default star" data-toggle="tooltip" data-placement="top" title="Make Favorite">
-        <span class="glyphicon glyphicon-star">
-        </span>
-      </button>
-        <button type="button"  class="btn btn-default share" data-toggle="tooltip" data-placement="top" title="Share with friends">
-        <span class="glyphicon glyphicon-share">
-        </span>
-      </button>
-      <button type="button"   class="btn btn-default tag" data-toggle="tooltip" data-placement="top" title="edit tags">
-        <span class="glyphicon glyphicon-tag">
-        </span>
-</button>
- <button type="button"   class=" btn btn-default trash" data-toggle="tooltip" data-placement="top" title="Delete from List">
-        <span class="glyphicon glyphicon-trash">
-        </span>
-      </button></p>
-      </div>
-    </div>
-  </div> -->
 
 <?php require_once("get_links.php");?>
 
@@ -288,6 +191,14 @@ var url="<?php echo $url; ?>";
 
 
 <?php } ?>
+
+</script>
+<script type="text/javascript">
+$(".share_modal li").click(function(){
+  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"#\">View Links</a>");
+})
+
+
 
 </script>
 
