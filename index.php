@@ -134,31 +134,38 @@ opacity: 0.7;
 
 <?php require_once("get_links.php");?>
 
-<!-- 
-</div></div> -->
-
-
 
 <div id="assets">
 	<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(".plus").click(function(){
-
-  var sec=$(this).parent().parent().parent().remove();
- 
-
-});
 
 $(".trash").click(function(){
 
+$(this).parent().parent().parent().animate({
+    height: "toggle"
+  }, 500, function() {
   var removal=$(this).parent().parent().parent();
   removal.remove();
+});
 
-//$(".col-sm-3").animate({  marginRight : "-=180px"}, 500,"linear");
 
 });
+
+$(".star").click(function(){
+  $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>");
+var userid=1;
+var linkid=$(this).parent().parent().attr("data-linkid");
+$.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/save_fav.php" ,
+  data: {lid: linkid, uid: userid},
+  success:function(data){
+    console.log(data);
+     }
+})
+});
+
 
 </script>
 <?php
@@ -195,13 +202,26 @@ var url="<?php echo $url; ?>";
 </script>
 <script type="text/javascript">
 $(".share_modal li").click(function(){
-  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"#\">View Links</a>");
+  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
 })
 
+$(".tag").click(function(){
+var id=$(this).parent().parent().attr("data-linkid");
+$.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/get_tags.php" ,
+  data: {id: id},
+  success:function(data){
+    $("#update_tag").append(data);
+
+      }
+})
+});
 
 
 </script>
 
+<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 </div>
 </body>
 </html>

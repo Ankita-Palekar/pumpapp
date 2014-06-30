@@ -68,6 +68,7 @@ nav{
 
 </heading>
 </div>
+
 <nav role="navigation" class="navbar navbar-inverse">
 
     <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -111,7 +112,7 @@ nav{
 </div></li>
             <li><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li class="active"><a href="groups.html">My Groups</a></li>
+            <li  class="active"><a href="groups_ws.php">My Groups</a></li>
             <li><a href="archive.php">Archive</a></li>
            
         </ul>

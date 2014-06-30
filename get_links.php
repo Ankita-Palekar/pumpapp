@@ -7,35 +7,33 @@
     
     // Perform Update
 
-    $query="select link_url from links";
+    $query="select link_id, link_url from links;";
 
     $result = mysqli_query($connection, $query);
 
     if ($result) {
       // Success
   
-     // $output="<ul>";
-
-
-
-      $output=" <div class=\"row\">";
+  
+$output="";
       foreach($result as $value)
       {
+       
      
-        foreach ($value as $item) { 
-        //  require_once("share_modal.php");
-            $safe_url=urlencode($item);
-            //echo $safe_url;
+        foreach ($value as $item_key=>$item) {  
+      if(is_numeric($item)){
            $output.=" <div class=\"col-sm-3 col-sm-3\">
-    <div  class=\"thumbnail\">
-      <div class=\"caption\">";
-     
-           // $output.= "<button type=\"button\" class=\"btn btn-default\"";
-           // $output.=" id=\"$safe_url\">";
-      //  $output.= "$safe_url"; 
-           // $output.="<h5>";
-           //  $output.= getTitle($safe_url);
-           //  $output.="</h5>";
+    <div  class=\"thumbnail\" data-linkid=";     
+      $output.="$item";
+          $output.=">";
+           $output.="<div class=\"caption\" >";}
+       
+           
+
+     else{
+       $safe_url=urlencode($item);
+
+           
           $output.= "<div class=\"crop\">";
         $output.= "<img src=\"https://api.thumbalizr.com/?url=";
         $output.=$safe_url;
@@ -47,12 +45,8 @@
        //    $output.=$title;
     
         // $output.="</button>";
-      
- 
-        $output.="<p><button type=\"button\" class=\"btn btn-default plus\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Archive this page\">
-        <span class=\"glyphicon glyphicon-plus\">
-        </span>
-      </button>
+            
+        $output.="<p>
       <button type=\"button\"  class=\"btn btn-default star\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Make Favorite\">
         <span class=\"glyphicon glyphicon-star\">
         </span>
@@ -61,12 +55,12 @@
       <button class=\"btn btn-default share\" data-toggle=\"modal\" title=\"Share\" data-target=\".share_modal\">
         <span class=\"glyphicon glyphicon-share\">
        </span>
-      </button>";
-      
-       $output.= "<button type=\"button\"   class=\"btn btn-default tag\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"edit tags\">
+      </button>
+      <button class=\"btn btn-default tag\" data-toggle=\"modal\" title=\"Share\" data-target=\".tag_modal\">
         <span class=\"glyphicon glyphicon-tag\">
-        </span>
-</button>
+       </span>
+      </button>
+     
  <button type=\"button\"   class=\" btn btn-default trash\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete from List\">
         <span class=\"glyphicon glyphicon-trash\">
         </span>
@@ -74,9 +68,14 @@
         $output.="</div>";
         $output.="</div>";
         $output.="</div>";
+
+    
+        
           }
-      }
+
         $output.="</div>";
+      }
+ }
         }
         else
         {
@@ -85,15 +84,10 @@
 
         echo $output;
 
-     // $_SESSION["message"] = "Page updated.";
-
-
-
            require_once("share_modal.php"); 
-
+           require_once("tags_modal.php");
        } else {
-      // Failure
-       //  $_SESSION["message"] = "Page update failed.";
+        
          echo "failer";
        }
   

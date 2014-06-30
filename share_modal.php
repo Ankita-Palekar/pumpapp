@@ -11,7 +11,7 @@
     
         <label for="link_url">Choose which group to share with:</label></br>
       <ul>
-   <?php   require_once("get_groups.php");?>
+   <?php   require_once("get_groups2.php");?>
         </ul>
 
       </form>
