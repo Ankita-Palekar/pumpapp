@@ -1,5 +1,4 @@
 <?php require_once("db_connection2.php"); ?>
-<?php require_once("get_title.php");?>
 
 <?php
 
@@ -7,7 +6,7 @@
     
     // Perform Update
 
-    $query="select link_id, link_url from links;";
+    $query="select link_id, link_url from links where fav=1;";
 
     $result = mysqli_query($connection, $query);
 
@@ -28,14 +27,6 @@ $output="";
           $output.=">";
            $output.="<div class=\"caption\" >";
        
-           $query2="select fav from links where link_id=";
-           $query2.=$item;
-           $result2 = mysqli_query($connection, $query2);
-            foreach ($result2 as $var) {
-             foreach ($var as $varval) {
-            $fav=$varval;
-               }
-            }
 }
      else{
        $safe_url=urlencode($item);
@@ -52,21 +43,13 @@ $output="";
        //    $output.=$title;
     
         // $output.="</button>";
-      if($fav==0){      
-        $output.="<p>
-      <button type=\"button\"  class=\"btn btn-default star\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Make Favorite\">
-        <span class=\"glyphicon glyphicon-star\">
-        </span>
-      </button>";
-}
-else{
+     
      
         $output.="<p>
       <button type=\"button\"  class=\"btn btn-default star\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Make Favorite\">
         <span class=\"glyphicon glyphicon-ok\">
         </span>
       </button>";
-}
         
       $output.="<button class=\"btn btn-default share\" data-toggle=\"modal\" title=\"Share\" data-target=\".share_modal\">
         <span class=\"glyphicon glyphicon-share\">

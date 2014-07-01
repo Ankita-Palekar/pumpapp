@@ -141,6 +141,18 @@ opacity: 0.7;
 <script type="text/javascript">
 
 $(".trash").click(function(){
+var r=confirm("Are you sure you want to delete this?");
+if(r==true){
+var link_id=$(this).parent().parent().attr("data-linkid");
+$.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/delete_item.php" ,
+  data: {lid: link_id },
+  success:function(data){
+    console.log(data);
+     }
+})
+
 
 $(this).parent().parent().parent().animate({
     height: "toggle"
@@ -148,23 +160,84 @@ $(this).parent().parent().parent().animate({
   var removal=$(this).parent().parent().parent();
   removal.remove();
 });
-
+}
+else{
+}
 
 });
 
 $(".star").click(function(){
-  $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>");
-var userid=1;
-var linkid=$(this).parent().parent().attr("data-linkid");
-$.ajax({
+  var linkid=$(this).parent().parent().attr("data-linkid");
+  $(this).toggleClass("star").toggleClass("ok");
+if($(this).hasClass("star")){
+   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/delete_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+  console.log(data);
+    }
+})
+}
+else{
+   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
+   $.ajax({
   type: 'GET',
   url:"http://localhost/pumpapp/save_fav.php" ,
-  data: {lid: linkid, uid: userid},
+  data: {lid: linkid},
   success:function(data){
     console.log(data);
      }
 })
+}
+
+
 });
+
+$(".ok").click(function(){
+var k=confirm("Surely remove from favorites?");
+  if(k==true){var linkid=$(this).parent().parent().attr("data-linkid");
+  $(this).toggleClass("star").toggleClass("ok");
+if($(this).hasClass("star")){
+   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/delete_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+  console.log(data);
+    }
+})
+}
+else{
+   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/save_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+    console.log(data);
+     }
+})
+}}
+else{
+  
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>
@@ -212,7 +285,7 @@ $.ajax({
   url:"http://localhost/pumpapp/get_tags.php" ,
   data: {id: id},
   success:function(data){
-    $("#update_tag").append(data);
+    $("#update_tag").html(data);
 
       }
 })

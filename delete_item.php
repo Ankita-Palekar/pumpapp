@@ -4,13 +4,14 @@
     
     $lid=$_REQUEST["lid"];
 
-    $query="update links set fav=1 where link_id=";
+    $query="delete from links where link_id=";
     $query.="$lid;";
-echo $query;
+//echo $query;
     $result = mysqli_query($connection, $query);
 
         if ($result) {
-        echo "dne";
+        echo "Done";
+        
           }
         
         else
@@ -22,7 +23,6 @@ echo $query;
         
          echo "failer";
        }
-  
   
 
 ?>

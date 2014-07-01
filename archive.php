@@ -43,6 +43,21 @@ nav{
 .right{
     float: right;
 }
+.thumbnail{
+  margin-left: 10px;
+  text-align: center;
+}
+.crop {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 500px;
+    height: 500px;
+    margin: 0px 0 -40px -60px;
+}
 
 
 
@@ -101,7 +116,7 @@ nav{
             <li><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li ><a href="groups.html">My Groups</a></li>
-            <li class="active"><a href="archive.php">Archive</a></li>
+            <li class="active"><a href="archive.php">Favorites</a></li>
                   </ul>
         
 
@@ -118,10 +133,10 @@ nav{
 </nav>
 
         
-  <div class="col-sm-12 well">
-   <h1> Sorry This link is broken!</h1>
+  <div>
+   <?php require_once("get_favorites.php") ?>
   </div>
-</div> 
+
 
 
 <div id="assets">
@@ -132,6 +147,164 @@ $("li").click(function(){
     $(this).siblings(".active").removeClass("active");
     $(this).addClass("active");
 });
+
+
+$(".trash").click(function(){
+var r=confirm("Are you sure you want to delete this?");
+if(r==true){
+var link_id=$(this).parent().parent().attr("data-linkid");
+$.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/delete_item.php" ,
+  data: {lid: link_id },
+  success:function(data){
+    console.log(data);
+     }
+})
+
+
+$(this).parent().parent().parent().animate({
+    height: "toggle"
+  }, 500, function() {
+  var removal=$(this).parent().parent().parent();
+  removal.remove();
+});
+}
+else{
+}
+
+});
+
+$(".star").click(function(){
+  var s=confirm("Surely remove from favorites?");
+  if(s==true){
+  var linkid=$(this).parent().parent().attr("data-linkid");
+  $(this).toggleClass("star").toggleClass("ok");
+if($(this).hasClass("star")){
+   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/delete_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+  console.log(data);
+    }
+})
+}
+else{
+   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/save_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+    console.log(data);
+     }
+})
+}
+}
+else{
+  
+}
+
+});
+
+$(".ok").click(function(){
+var k=confirm("Surely remove from favorites?");
+  if(k==true){var linkid=$(this).parent().parent().attr("data-linkid");
+  $(this).toggleClass("star").toggleClass("ok");
+if($(this).hasClass("star")){
+   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/delete_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+  console.log(data);
+    }
+})
+}
+else{
+   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
+   $.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/save_fav.php" ,
+  data: {lid: linkid},
+  success:function(data){
+    console.log(data);
+     }
+})
+}}
+else{
+  
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<?php
+if(isset($_POST["create"])){
+  echo $_POST["tags"];
+$link=urlencode($_POST["link_url"]);
+$tags=$_POST["tags"];
+$url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL=";
+$url.=$link;
+$url.=";tags=";
+$url.=$_POST["tags"];
+$url.=";";
+};
+?>
+<script type="text/javascript">
+
+<?php if(isset($_POST["create"])){?> 
+
+
+  
+var url="<?php echo $url; ?>";
+  $.ajax({                                                                                                                                                                                                        
+    type: 'GET',                                                                                                                                                                                                 
+    url: url,                                                                                                                                              
+  dataType: 'jsonp',                                                                                                                                                                                                
+    success: function() { console.log('Success!');
+     },                                                                                                                                                                                       
+    error: function() { console.log('Uh Oh!'); }                                                                                                                           
+})
+
+
+<?php } ?>
+
+</script>
+<script type="text/javascript">
+$(".share_modal li").click(function(){
+  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
+})
+
+$(".tag").click(function(){
+var id=$(this).parent().parent().attr("data-linkid");
+$.ajax({
+  type: 'GET',
+  url:"http://localhost/pumpapp/get_tags.php" ,
+  data: {id: id},
+  success:function(data){
+    $("#update_tag").html(data);
+
+      }
+})
+});
+
 </script>
 </div>
 </body>
