@@ -175,66 +175,29 @@ else{
 
 });
 
+
 $(".star").click(function(){
-  var s=confirm("Surely remove from favorites?");
-  if(s==true){
-  var linkid=$(this).parent().parent().attr("data-linkid");
-  $(this).toggleClass("star").toggleClass("ok");
-if($(this).hasClass("star")){
-   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/delete_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-  console.log(data);
-    }
-})
-}
-else{
-   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/save_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-    console.log(data);
-     }
-})
-}
-}
-else{
-  
-}
-
-});
-
-$(".ok").click(function(){
 var k=confirm("Surely remove from favorites?");
-  if(k==true){var linkid=$(this).parent().parent().attr("data-linkid");
-  $(this).toggleClass("star").toggleClass("ok");
-if($(this).hasClass("star")){
-   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
+  if(k==true){
+    var linkid=$(this).parent().parent().attr("data-linkid");
    $.ajax({
   type: 'GET',
   url:"http://localhost/pumpapp/delete_fav.php" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);
+
     }
-})
+});
+     $(this).parent().parent().parent().animate({
+    height: "toggle"
+  }, 500, function() {
+  var removal=$(this).parent().parent().parent();
+  removal.remove();
+  window.location.href="archive.php";
+    });
 }
-else{
-   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/save_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-    console.log(data);
-     }
-})
-}}
+
 else{
   
 }
