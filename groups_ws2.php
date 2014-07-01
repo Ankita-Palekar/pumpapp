@@ -1,7 +1,11 @@
 
 <?php require_once("db_connection2.php");
       // include("included_functions.php");
+     if (isset($_GET)){
+        $userid=$_GET["userid"];
+     }else { 
       $userid=2;
+  }
  ?>
 <?php
   // require_once("included_functions.php");
@@ -207,9 +211,9 @@ font-weight: bold;
     
     // Perform Update
 
-    $query="select * from Groups ";
-    // $query.="WHERE ";
-
+    $query="select * from Groups G, group_members M ";
+    $query.="WHERE G.groups_id = M.grp_id ";
+    $query.="AND M.user_id={$userid}";
     $result = mysqli_query($connection, $query);
 
     if ($result) {
