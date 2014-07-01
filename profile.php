@@ -1,6 +1,12 @@
 <?php 
 require_once("db_connection2.php");
-$user_id=8;
+
+if (isset($_GET)) {
+    $user_id=$_GET["userid"];
+    }
+     else {
+    $user_id=8;  // CHANGE THIS!
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -135,21 +141,14 @@ padding-top: 10px;
   			$result = mysqli_query($connection, $query);
   			// $output="<p>";
   			if($result){
+          while ($emails=mysqli_fetch_assoc($result)){
+  		      echo $emails["emailId"];
+      }}
+        else{
+          echo "oh no!";
+        }
 
-  				foreach($result as $item){
-  					foreach($item as $value)
-  					{
-  						$output= "$value";
-  					}
-  				}
-  			
-  			}
-        
-  			echo $output;
-  		}else
-  		{
-  			echo("Oh no!");
-  		}
+    }
   ?></dd>
 </br>
 
@@ -166,70 +165,57 @@ padding-top: 10px;
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><?php $i=1; echo $i++;?></td>
-          <td><?php
+        
+         <?php $i=1;
           	if(empty($errors)){
-          		$query="select group_name from groups where groups_id in ";
-  			$query.="(select grp_id from group_members where user_id=";
-  			$query.="'$user_id')";
-  			$result = mysqli_query($connection, $query);
-  			// $output="<p>";
-  			if($result){
-  				foreach($result as $item){
-  					foreach($item as $value)
-  					{
-  						$output= "$value";
-  					}
-  				}
-  				}
-  			// $output="/p";
-  			echo $output;
-  				}else
-  					{
-  					echo("Oh no!");
-  					}
-			?>
-          </td>
-          <td>
-          	<?php
-          	if(empty($errors)){//make group_id a variable so as to access
-          		$query="select emailId from users where groups_id in ";
-  			$query.="(select grp_id from group_members where user_id=";
-  			$query.="'$user_id')";
-  			$result = mysqli_query($connection, $query);
-  			// $output="<p>";
-  			if($result){
-  				foreach($result as $item){
-  					foreach($item as $value)
-  					{
-  						$output= "$value";
-  					}
-  				}
-  				}
-  			// $output="/p";
-  			echo $output;
-  				}else
-  					{
-  					echo("Oh no!");
-  					}
-			?>
+        $query="SELECT * from ";
+        $query .="Groups G, group_members M, users U ";
+        $query.="WHERE G.groups_id = M.grp_id";
+        $query.=" AND M.user_id={$user_id} AND G.Admin_id=U.user_id ";
+        
+          // this query will be slow.  try to use count() 
 
-          </td>
-          <td>2</td>
-        </tr>
+    $result = mysqli_query($connection, $query);
+
+   
+         if ($result) {
+    while ($groupname=mysqli_fetch_assoc($result)) {
+            ?>
+
+
+
+         <?php  
+               $grpid=$groupname["grp_id"]; 
+               $q="SELECT * FROM group_members ";
+               $q.="WHERE grp_id={$grpid}";
+               $result2=mysqli_query($connection, $q);
+               $count=mysqli_num_rows($result2);
+                            
+         ?>
+        
+      <tr >
+        <td> <?php echo $i++; ?> </td>
+        <td class="grpname">  <?php echo $groupname["group_name"]; ?>  </td>
+        <td> <?php echo $groupname["emailId"]; ?></td>
+        <td><?php echo "{$count}" ?> </td>
+      </tr>
+
+        <?php } 
+       }
+       }
+        else echo ("oh no");
+      ?>
+
+         
+          
+        
         <tr>
-          <td><?php echo $i++;?></td>
+          <!-- <td><?php echo $i++; ?></td>
           <td>Jacob</td>
           <td>Thornton</td>
-          <td>@fat</td>
+          <td>@fat</td> -->
         </tr>
-        <tr>
-          <td>3</td>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+       
       </tbody>
     </table>
   </div>
