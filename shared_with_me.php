@@ -2,9 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs</title><!-- 
-	<link rel="stylesheet" type="text/css" href="styleSheet.css">
- --><link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<title>Pump!- Share your URLs</title>
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
 <style type="text/css">
 
@@ -48,6 +47,11 @@ opacity: 0.7;
     width: 500px;
     height: 500px;
     margin: 0px 0 -40px -60px;
+}
+#notify_content{
+text-align: center;
+margin-left: 20%;
+margin-right: 20%;
 }
 
 
@@ -138,8 +142,14 @@ opacity: 0.7;
 </nav>
 
 
+<ul id="notify_content" class="list-group">
+  <?php require_once("with_notify.php");?>
+  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+</ul>
 
-<?php require_once("get_links.php");?>
 
 
 <div id="assets">
@@ -234,18 +244,6 @@ else{
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 <?php

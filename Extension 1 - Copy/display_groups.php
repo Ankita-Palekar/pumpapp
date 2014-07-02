@@ -34,11 +34,9 @@
 
         echo $output;
 
-     // $_SESSION["message"] = "Page updated.";
 
        } else {
-      // Failure
-       //  $_SESSION["message"] = "Page update failed.";
+        
          echo "failer";
        }
   

@@ -1,5 +1,5 @@
 $("document").ready(function(){
-	
+
 $("#save").click(function(){
   window.location.href="save.html " ;
 
@@ -82,6 +82,12 @@ $("#shareg").click(function(){
   window.location.href="share_with_group.html" ;
 });
 
+$("#sharei").click(function(){
+
+window.location.href="share_ind.html";
 
 
 });
+
+});
+
