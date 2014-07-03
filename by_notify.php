@@ -10,7 +10,7 @@ if(isset($_GET)){
 <head></head>
 <body>
 
-<li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+
  
 
 <?php
@@ -30,10 +30,7 @@ if(isset($_GET)){
 
        while ($viewed=mysqli_fetch_row($result)) {
          ?>
-<pre>
-        <?php 
-       // print_r($viewed); ?>
-</pre>
+
          <?php
       $output.="<li class=\"list-group-item list-group-item-success\"> Your Link ";
        $output.=$viewed["5"];
