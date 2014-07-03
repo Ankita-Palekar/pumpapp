@@ -1,4 +1,4 @@
-<?php require_once("db_connection.php"); 
+<?php require_once("db_connection2.php"); 
 
 $userid=2;
 
