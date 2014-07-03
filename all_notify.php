@@ -1,10 +1,7 @@
 <?php require_once("db_connection2.php"); 
 
-if(isset($_GET)){
-  $userid=$_GET["user_id"];
-}else{
-  $userid=2;
-}
+  $userid=1;
+
 ?>
 
 
@@ -36,7 +33,7 @@ if(isset($_GET)){
          <?php
 
 
-      $output="<li class=\"list-group-item list-group-item-success\"> The Link ";
+      $output="<li class=\"list-group-item list-group-item-primary\"> The Link ";
       $output.=$viewed["link_url"];
      $output.=" has been shared by ";
       $output.=$viewed["username"];
@@ -66,7 +63,7 @@ if ($result2) {
          ?>
 
          <?php
-      $output2="<li class=\"list-group-item list-group-item-success\"> Your Link ";
+      $output2="<li class=\"list-group-item list-group-item-primary\"> Your Link ";
        $output2.=$viewed2["5"];
       $output2.="  has been viewed by ";
       $output2.=$viewed2["2"];
