@@ -1,9 +1,11 @@
+
+
 <?php require_once("db_connection2.php"); ?>
-<?php
+<?php $userid=1;
 
   if (empty($errors)) {
 //$output=array();
-    $query="select emailId from users order by emailId asc;";
+    $query="select details from gmail_contacts G, users U WHERE G.user_id={$userid} order by emailId asc;";
 
     $result = mysqli_query($connection, $query);
 $name=array();
