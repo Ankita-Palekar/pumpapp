@@ -34,6 +34,10 @@ var url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpA
 
 });
 
+$("#notify").click(function(){
+window.location.href="notify.html";
+});
+
 
 $("#main_page").click(function(){
 
