@@ -13,7 +13,7 @@ $userid=2;
     
     // Perform Update
 
-    $query="select * from share_link SL, links L, share S, groups G, group_members M, users U  ";
+    $query="select * from share_link SL, links L, share S, Groups G, group_members M, users U  ";
     $query.="WHERE S.group_id=M.grp_id ";
     $query.="AND S.link_id=L.link_id ";
     //  AND S.link_id=L.link_id to get link_url also
