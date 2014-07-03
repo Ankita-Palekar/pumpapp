@@ -1,10 +1,13 @@
 <?php require_once("db_connection2.php"); 
 
-$userid=2;
-
+if(isset($_GET)){
+  $userid=$_GET["user_id"];
+}else{
+  $userid=2;
+}
 ?>
 
-<li class="list-group-item list-group-item-success">D</li>
+
  
 
 <?php
@@ -29,10 +32,7 @@ $userid=2;
        while ($viewed=mysqli_fetch_assoc($result)) {
 
           ?>
-<pre>
-        <?php 
-       // print_r($viewed); ?>
-</pre>
+
          <?php
 
 
