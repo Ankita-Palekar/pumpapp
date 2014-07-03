@@ -144,10 +144,7 @@ margin-right: 20%;
 
 <ul id="notify_content" class="list-group">
   <?php require_once("by_notify.php");?>
-  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+ 
 </ul>
 
 
