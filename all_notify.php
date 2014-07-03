@@ -36,8 +36,9 @@ if(isset($_GET)){
          <?php
 
 
-      $output="<li class=\"list-group-item list-group-item-success\"> The Link ";
+      $output="<li class=\"list-group-item list-group-item-success\"> The Link <a href=";
       $output.=$viewed["link_url"];
+      $output.=">click here</a>";
      $output.=" has been shared by ";
       $output.=$viewed["username"];
       $output.=" on the group ";
@@ -66,8 +67,9 @@ if ($result2) {
          ?>
 
          <?php
-      $output2="<li class=\"list-group-item list-group-item-success\"> Your Link ";
-       $output2.=$viewed2["5"];
+      $output2="<li class=\"list-group-item list-group-item-success\"> Your Link <a href=";
+      $output2.=$viewed2["5"];
+      $output2.=">click here</a>";
       $output2.="  has been viewed by ";
       $output2.=$viewed2["2"];
       $output2.="  from the group ";
