@@ -36,8 +36,9 @@ if(isset($_GET)){
          <?php
 
 
-      $output="<li class=\"list-group-item list-group-item-success\"> The Link ";
+      $output="<li class=\"list-group-item list-group-item-success\"> The Link <a href=";
       $output.=$viewed["link_url"];
+      $output.="> click here</a> ";
      $output.=" has been shared by ";
       $output.=$viewed["username"];
       $output.=" on the group ";

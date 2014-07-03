@@ -32,8 +32,9 @@ if(isset($_GET)){
          ?>
 
          <?php
-      $output.="<li class=\"list-group-item list-group-item-success\"> Your Link ";
-       $output.=$viewed["5"];
+      $output.="<li class=\"list-group-item list-group-item-success\"> Your Link <a href=";
+      $output.=$viewed["5"];
+      $output.=">click here</a>";
       $output.="  has been viewed by ";
       $output.=$viewed["2"];
       $output.="  from the group ";
