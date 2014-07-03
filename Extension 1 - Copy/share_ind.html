@@ -16,16 +16,19 @@ ul{
   list-style: none;
 }
 
-button{
+#go{
+  width: 40px;
+}
+
+#return{
   width: 160px;
   text-align: center;
-  margin-right: 10px;
 margin-bottom: 20%;
 }
-#searcharea{
-  margin-bottom: 5%;
-  margin-left: 10%;
-  margin-right: 10%;
+
+#friends{
+  /*margin-bottom: 5%;*/
+  width: 250px;
 }
 #update{
   margin-left: 5%;
@@ -33,18 +36,21 @@ margin-bottom: 20%;
   margin-bottom: 10%;
   text-align: center;
 }
+
   </style>
 </head>
 <body>
   
  
 <div class="ui-widget">
-  <h3> Search for a friend: </h3>  <button id="return" class="btn btn-danger">Go Back</button></br></br>
-  <input id="friends">
-
+  <h3> Search for a friend: </h3> </br>
+  <input id="friends" ></br></br>
+  <h4>Or just enter an E-mail ID</h4>
+  <input id="myMail" type="email">   <button id="go" class="btn btn-xs btn-success">Go</button></br></br>
+ <button id="return" class="btn btn-danger">Go Back</button>
 </div>
   
-  <div id="update">
+  <div id="update" >
 
   </div>
 

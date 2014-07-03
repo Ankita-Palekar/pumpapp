@@ -3,13 +3,13 @@
 
   if (empty($errors)) {
 //$output=array();
-    $query="select details from gmail_contacts;";
+    $query="select emailId from users order by emailId asc;";
 
     $result = mysqli_query($connection, $query);
 $name=array();
     if ($result) {
       while($row=mysqli_fetch_assoc($result)){
-           $name[]=$row["details"];
+           $name[]=$row["emailId"];
           
         }
       }
