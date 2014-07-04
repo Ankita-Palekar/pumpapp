@@ -155,6 +155,7 @@ $.ajax({
   type: 'GET',
   url:"http://localhost/pumpapp/delete_item.php" ,
   data: {lid: link_id },
+  //dataType:'jsonp'
   success:function(data){
     console.log(data);
      }
@@ -234,15 +235,6 @@ else{
 
 
 });
-
-
-
-
-
-
-
-
-
 
 
 
