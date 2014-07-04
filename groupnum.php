@@ -24,6 +24,8 @@
 <meta charset="utf-8"/>
     <title>Pump!- Share your URLs</title>
    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
+
 <style type="text/css">
 
 @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
@@ -262,6 +264,7 @@ else echo ("oh no");
     <ul class="nav nav-tabs">
       <li class="active"><a href="#mem" data-toggle="tab">MEMBERS</a></li>
       <li><a href="#linkdiv" data-toggle="tab">LINKS shared</a></li>
+      <li><a href="#shareURI" data-toggle="tab">Share a Link with this Group</a></li>
     </ul>
     </div>
 </nav>
@@ -297,6 +300,17 @@ else echo ("oh no");
       }
      ?>
     </ul>
+  </div>
+
+    <div class="tab-pane well" id="shareURI">
+     <form action="groupnum.php">
+      <label for="url">Enter URL for Sharing With this Group:</label>
+      <input name="url" class="form-control fg" placeholder="https://"></br>
+      <label for="new_tags">Add Tags</label></br>
+         <input type="text" name="new_tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/></br>
+      <button class="btn btn-success" name="share_now" type="submit">Share Now!</button>
+    <h4>Note: This page will automatically be saved in your links.</h4>
+     </form>
   </div>
 </div> 
 </div>
@@ -351,7 +365,7 @@ $(".share_modal li").click(function(){
 
 
 </script>
-
+<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 </body>
 </html>
 <?php
