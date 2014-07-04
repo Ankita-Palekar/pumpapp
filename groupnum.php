@@ -10,7 +10,7 @@
 	 		}
     $query="select user_id from group_members ";
     $query.="WHERE grp_id={$grp_id} ";
-    $result = mysqli_query($connection, $query);
+    $resultm = mysqli_query($connection, $query);
     $querylink="select link_id from share ";
     $querylink.="where group_id={$grp_id} ";
     $resultlink=mysqli_query($connection, $querylink);
@@ -149,97 +149,160 @@ font-weight: bold;
 
 </heading>
 </div>
+
 <nav role="navigation" class="navbar navbar-inverse">
 
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ><a href="index.html">List</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li class="active"><a href="groups.html">My Groups</a></li>
-            <li><a href="archive.html">Archive</a></li>
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
-                <ul role="menu" class="dropdown-menu">
-                    <li><a href="#">Inbox</a></li>
-                    <li><a href="#">Drafts</a></li>
-                    <li><a href="#">Sent Items</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Trash!</a></li>
-                </ul>
-            </li>
+          <li>  <div class="col-md-6">
+     <button class="btn btn-default plus-sign" data-toggle="modal" title="Add new link" data-target=".add_url_modal">
+        <span class="glyphicon glyphicon-plus-sign">
+       </span>
+      </button>
+
+
+<div class="modal fade add_url_modal" tabindex="+1" role="dialog" >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Save your URL</h4>
+      </div>
+      <div class="modal-body">
+        
+     <form action="index.php" method=POST>
+    
+        <label for="link_url">Put URL here:</label>
+        <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required>
+
+         <label for="tags">Tags</label></br>
+         <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
+    
+        <button type="submit" name="create" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </form>
+      </div>
+     
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div></li>
+            <li ><a href="index.php">List</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li class="active"><a href="groups_ws.php">My Groups</a></li>
+            <li><a href="archive.php">Archive</a></li>
+           
         </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="newLogin.html">LogOut</a></li>
+            <li><a href="welcome.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
                 <input type="text" placeholder="Search" class="form-control">
             </div>
         </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">42</span></a>
+        </li>
+        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">42</span></a>
+        </li>
+
+        </ul>
     </div>
 </nav>
-
-
-
-  
-
-
-	<nav role="navigation" class="navbar navbar-inverse">
-	<div class="tabbable">
-
-<ul class="nav nav-tabs">
-   <li class="active"><a href="#mem" data-toggle="tab">MEMBERS</a></li>
-   <li ><a href="#linkdiv" data-toggle="tab">LINKS shared</a></li>
-</ul>
-	</div>
-</nav>
-<div class="tab-content">
-	<div class="tab-pane active" id="mem">
-<div class="row">
+  <div class="row">
   <div class="col-sm-2">
     <div class="sidebar-nav">
       <div class="navbar navbar-inverse" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav">
- 		 
-			<ul>
-			   <?php
-			
-				while($member = mysqli_fetch_row($result)) {
-				
-			  ?>
-				<li class="members"><a href="#"><?php echo $member[0]; ?></a></li>
-	 		 <?php
-				 }
-			  ?>
-			</ul>
-			</div>
-			</div>
-			</div>
-			</div>
-			</div>
+            
+            <?php
+
+            if (empty($errors)) {
+
+    $query="select * from Groups G, group_members M ";
+    $query.="WHERE G.groups_id = M.grp_id ";
+    $query.="AND M.user_id={$userid}";
+    $result = mysqli_query($connection, $query);
+
+    if ($result) {
+        while ($groupname=mysqli_fetch_assoc($result)) {
+      ?>
+        <?php  
+               $grpid=$groupname["groups_id"];
+               $cur_url="groupnum.php?";
+               $cur_url.="groups_id={$grpid}";
+               $cur_url.="&user_id={$userid}";
+         ?>
+        <li class="grpname"><a href="<?php echo $cur_url ?>"><?php echo $groupname["group_name"]; ?> </a></li>
+
+        <?php } 
+   }
+}
+else echo ("oh no");
+?>
+             <li><a href="create_groups_ws.php">Create Group <span class="glyphicon glyphicon-plus right"></span></a></li>
+             </ul>
+        </div>
+      </div></div></div>
+    
+<div class="col-sm-8">
+    <nav role="navigation" class="navbar navbar-inverse">
+  <div class="tabbable">
+
+  
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#mem" data-toggle="tab">MEMBERS</a></li>
+      <li><a href="#linkdiv" data-toggle="tab">LINKS shared</a></li>
+    </ul>
+    </div>
+</nav>
+<div class="tab-content">
+  <div class="tab-pane active" id="mem">
+    
+             <ul class=" well">
+     
+         <?php
+      
+        while($member = mysqli_fetch_row($resultm)) {
+        
+        ?>
+        <li class="members"><?php echo $member[0]; ?></li>
+       <?php
+         }
+        ?>
+      </ul>
+      
+      </div>
 
 
-  	</div>
 
     <div class="tab-pane" id="linkdiv">
-	   <ul class="linkclass">
-		<?php 
-			
-			while ($link=mysqli_fetch_row($resultlink)) {
-		 ?>
+     <ul class="linkclass well">
+    <?php 
+      
+      while ($link=mysqli_fetch_row($resultlink)) {
+     ?>
 
-		 <li><?php echo $link[0]; ?> </li>
-		 <?php 
-		 	}
-		 ?>
-	  </ul>
-	</div>
+     <li><?php echo $link[0]; ?> </li>
+     <?php 
+      }
+     ?>
+    </ul>
+  </div>
+</div> 
 </div>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+</div>
+	
+<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
@@ -249,6 +312,45 @@ font-weight: bold;
   mysqli_free_result($result);
   mysqli_free_result($resultlink);
 ?>
+<?php
+if(isset($_POST["create"])){
+  echo $_POST["tags"];
+$link=urlencode($_POST["link_url"]);
+$tags=$_POST["tags"];
+$url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL=";
+$url.=$link;
+$url.=";tags=";
+$url.=$_POST["tags"];
+$url.=";";
+};
+?>
+<script type="text/javascript">
+
+<?php if(isset($_POST["create"])){?> 
+
+
+  
+var url="<?php echo $url; ?>";
+  $.ajax({                                                                                                                                                                                                        
+    type: 'GET',                                                                                                                                                                                                 
+    url: url,                                                                                                                                              
+  dataType: 'jsonp',                                                                                                                                                                                                
+    success: function() { console.log('Success!');
+     },                                                                                                                                                                                       
+    error: function() { console.log('Uh Oh!'); }                                                                                                                           
+})
+
+
+<?php } ?>
+
+</script>
+<script type="text/javascript">
+$(".share_modal li").click(function(){
+  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
+});
+
+
+</script>
 
 </body>
 </html>
