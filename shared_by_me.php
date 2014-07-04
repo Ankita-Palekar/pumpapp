@@ -5,6 +5,7 @@
 	<title>Pump!- Share your URLs</title>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
+    <link href="pusher/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />
 <style type="text/css">
 
 
@@ -152,97 +153,7 @@ margin-right: 20%;
 <div id="assets">
 	<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
 
-$(".trash").click(function(){
-var r=confirm("Are you sure you want to delete this?");
-if(r==true){
-var link_id=$(this).parent().parent().attr("data-linkid");
-$.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/delete_item.php" ,
-  data: {lid: link_id },
-  success:function(data){
-    console.log(data);
-     }
-})
-
-
-$(this).parent().parent().parent().animate({
-    height: "toggle"
-  }, 500, function() {
-  var removal=$(this).parent().parent().parent();
-  removal.remove();
-});
-}
-else{
-}
-
-});
-
-$(".star").click(function(){
-  var linkid=$(this).parent().parent().attr("data-linkid");
-  $(this).toggleClass("star").toggleClass("ok");
-if($(this).hasClass("star")){
-   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/delete_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-  console.log(data);
-    }
-})
-}
-else{
-   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/save_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-    console.log(data);
-     }
-})
-}
-
-
-});
-
-$(".ok").click(function(){
-var k=confirm("Surely remove from favorites?");
-  if(k==true){var linkid=$(this).parent().parent().attr("data-linkid");
-  $(this).toggleClass("star").toggleClass("ok");
-if($(this).hasClass("star")){
-   $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/delete_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-  console.log(data);
-    }
-})
-}
-else{
-   $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
-   $.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/save_fav.php" ,
-  data: {lid: linkid},
-  success:function(data){
-    console.log(data);
-     }
-})
-}}
-else{
-  
-}
-
-
-});
-
-</script>
 <?php
 if(isset($_POST["create"])){
   echo $_POST["tags"];
@@ -297,6 +208,16 @@ $.ajax({
 </script>
 
 <script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="pusher/src/lib/gritter/js/jquery.gritter.min.js"></script>
+<script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+<script src="pusher/src/PusherNotifier.js"></script>
+<script type="text/javascript">
+$(function() {
+  var pusher = new Pusher('e8409a3db150a565692f');
+  var channel = pusher.subscribe('my_notifications');
+  var notifier = new PusherNotifier(channel);
+});
+</script>
 </div>
 </body>
 </html>
