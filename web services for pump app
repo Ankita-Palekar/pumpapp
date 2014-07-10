@@ -24,3 +24,7 @@ http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite
 
 8.if links shared is not saved in user account 
 http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID=2&groupID=10&LinkID=-1&link_url=githubmain.com
+
+9 sharing link withindividual without making a group 
+
+http://localhost/pumpappwebservice/REST.php?action=shareWithIndividual&link_id=1&sharrer_id=2&emailIds=abg@def.com
