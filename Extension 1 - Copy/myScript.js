@@ -17,14 +17,16 @@ $("#save_tags").click(function(){
    var  curl = tabs[0].url;  
    var safe_curl=encodeURIComponent(curl);
 var tags=$("input").val();
-var url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID=2&linkURL="+safe_curl+"&tags="+tags;
+var note=$("#note").val();
+
+var url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID=2&linkURL="+safe_curl+"&tags="+tags+"&notes="+note;
  $.ajax({ 
     type:'GET',
     url:url,
     //data: max,
     // dataType:'jsonp',
     success:function(data){
-      alert(url);
+      console.log(url);
       window.location.href="save_tags.html";
     },
     error:function(data){
