@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+    require_once("session.php");
+    require_once("functions.php");
+    require_once("db_connection2.php");
+ ?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8"/>
@@ -86,14 +90,28 @@ Share your URLs</small></h1>
 	if(isset($_POST["submit"])){
 $id=$_POST["emailID"];
 $pw=$_POST["password"];
-
-$url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/LoginAuthPumpApp;userEmail=";
-$url.=$id;
-$url.=";password=";
-$url.=$pw;
-$url.=";";
+  $query2 = "SELECT * FROM  users ";
+   $query2 .="WHERE emailId='{$id}' LIMIT 1";
+    $result2= mysqli_query($connection, $query2);
+    confirm_query($result2);
+    if ($usid=mysqli_fetch_assoc($result2)) {
+      $userid=$usid["user_id"];
+    }
+  
+     $_SESSION["emailId"]=$id;
+     $_SESSION["user_id"]=$userid;
+     // $_SESSION["user_id"]=$admin2["0"];
+ //      $url="groups_ws2.php?user_id=";
+ //      $url.=$admin2["0"];
+ //      redirect_to($url);
+                
+$url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=LoginAuthPumpApp&userEmail=";
+$url.=urlencode($id);
+$url.="&password=";
+$url.=urlencode($pw);
 
 }
+
 ?>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
@@ -105,17 +123,22 @@ $url.=";";
 var url="<?php echo $url; ?>";
 
 $("document").ready(function(){
-	
+  console.log("this is");
 
-	$.ajax({                                                                                                                                                                                                        
-    type: 'GET',                                                                                                                                                                                                 
-    url: url,                                                                                                                                              
-    dataType: 'jsonp',                                                                                                                                                                                                
-    success: function() { console.log('Success!');
-    	window.location.href="index.php";
-     },                                                                                                                                                                                       
-    error: function() { console.log('Uh Oh!'); window.location.href="index.php";}                                                                                                                           
-})
+ 
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function () {
+    if (this.status == 200 && this.readyState == 4) {
+      window.location.href="index.php";
+      console.log('response: ' + this.responseText);
+ }
+};
+xhr.send();
+
+
+
+
 
 
 });
