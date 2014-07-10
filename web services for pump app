@@ -1,0 +1,26 @@
+
+1.for user signup 
+
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=signUpPumpApp&emailID=453ankitapalekar@gmail.com&password=ankita&username=ankita
+
+2. for userLogin
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=LoginAuthPumpApp&userEmail=453ankitapalekar@gmail.com&password=ankita
+
+3.for saving links
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID=2&linkURL=google.com&tags=google&notes=hello this are my notes 
+
+4.for creating group
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=createGroup&groupName=group1&AdminID=1&UserIDs=2,3 
+
+5.for sharing link with group
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID=2&groupID=9&LinkID=2 
+
+6. after visiting link
+
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedVisitNotification&notifiyersID=3&sharelinkID=8 
+
+7.for link favouriting 
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id=2&link_id=1&fav=0
+
+8.if links shared is not saved in user account 
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID=2&groupID=10&LinkID=-1&link_url=githubmain.com
