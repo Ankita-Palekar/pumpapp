@@ -1,18 +1,23 @@
-<?php require_once("db_connection2.php"); ?>
-
-
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php");
+?>
+<?php include("sessiontodata.php"); ?>
+<?php confirm_logged_in(); ?>
 <?php 
-	 if (empty($errors)) {
+$output="";
+   if (empty($errors)) {
     // Perform Update
-	 	if (isset($_GET["groups_id"])){
-	 		$grp_id=$_GET["groups_id"];
-	 		$userid=$_GET["user_id"];
-	 		}
-    $query="select user_id from group_members ";
-    $query.="WHERE grp_id={$grp_id} ";
+    if (isset($_GET["groups_id"])){
+      $grp_id=$_GET["groups_id"];
+      $userid=$ID;
+      }
+    $query="select * from group_members M, users U ";
+    $query.="WHERE M.grp_id={$grp_id} AND U.user_id=M.user_id";
+    
     $resultm = mysqli_query($connection, $query);
-    $querylink="select link_id from share ";
-    $querylink.="where group_id={$grp_id} ";
+    $querylink="select * from share S, links L ";
+    $querylink.="where group_id={$grp_id} AND S.link_id=L.link_id";
     $resultlink=mysqli_query($connection, $querylink);
 }
  ?>
@@ -24,8 +29,6 @@
 <meta charset="utf-8"/>
     <title>Pump!- Share your URLs</title>
    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
-
 <style type="text/css">
 
 @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
@@ -195,15 +198,15 @@ font-weight: bold;
 </div></li>
             <li ><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li class="active"><a href="groups_ws.php">My Groups</a></li>
-            <li><a href="archive.php">Archive</a></li>
+            <li class="active"><a href="groups_ws2.php">My Groups</a></li>
+            <li><a href="archive.php">Favourites</a></li>
            
         </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="welcome.php">LogOut</a></li>
+            <li><a href="logout.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
@@ -230,9 +233,10 @@ font-weight: bold;
 
             if (empty($errors)) {
 
-    $query="select * from Groups G, group_members M ";
+    $query="select * from groups G, group_members M ";
     $query.="WHERE G.groups_id = M.grp_id ";
     $query.="AND M.user_id={$userid}";
+   
     $result = mysqli_query($connection, $query);
 
     if ($result) {
@@ -251,7 +255,7 @@ font-weight: bold;
 }
 else echo ("oh no");
 ?>
-             <li><a href="create_groups_ws.php">Create Group <span class="glyphicon glyphicon-plus right"></span></a></li>
+             <li><a href="groups_ws2.php">Create Group <span class="glyphicon glyphicon-plus right"></span></a></li>
              </ul>
         </div>
       </div></div></div>
@@ -264,7 +268,7 @@ else echo ("oh no");
     <ul class="nav nav-tabs">
       <li class="active"><a href="#mem" data-toggle="tab">MEMBERS</a></li>
       <li><a href="#linkdiv" data-toggle="tab">LINKS shared</a></li>
-      <li><a href="#shareURI" data-toggle="tab">Share a Link with this Group</a></li>
+      
     </ul>
     </div>
 </nav>
@@ -278,44 +282,33 @@ else echo ("oh no");
         while($member = mysqli_fetch_row($resultm)) {
         
         ?>
-        <li class="members"><?php echo $member[0]; ?></li>
+  
+        <li class="members"><?php echo $member[5].",   ".$member[4]; ?></li>
        <?php
          }
         ?>
       </ul>
       
       </div>
-
-
-
-    <div class="tab-pane" id="linkdiv">
+ <div class="tab-pane" id="linkdiv">
      <ul class="linkclass well">
     <?php 
       
       while ($link=mysqli_fetch_row($resultlink)) {
      ?>
-
-     <li><?php echo $link[0]; ?> </li>
+        <li><a href=" <?php echo $link[5]; ?>"> <?php echo $link[5]; ?> </a></li>
      <?php 
       }
      ?>
     </ul>
   </div>
 
-    <div class="tab-pane well" id="shareURI">
-     <form action="groupnum.php">
-      <label for="url">Enter URL for Sharing With this Group:</label>
-      <input name="url" class="form-control fg" placeholder="https://"></br>
-      <label for="new_tags">Add Tags</label></br>
-         <input type="text" name="new_tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/></br>
-      <button class="btn btn-success" name="share_now" type="submit">Share Now!</button>
-    <h4>Note: This page will automatically be saved in your links.</h4>
-     </form>
-  </div>
+ 
+   
 </div> 
 </div>
 </div>
-	
+  
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -323,19 +316,20 @@ else echo ("oh no");
 </script>
 <?php
   // 4. Release returned data
-  mysqli_free_result($result);
+  mysqli_free_result($resultm);
   mysqli_free_result($resultlink);
 ?>
+
 <?php
 if(isset($_POST["create"])){
   echo $_POST["tags"];
 $link=urlencode($_POST["link_url"]);
 $tags=$_POST["tags"];
-$url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL=";
+$url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID={$user_id}&linkURL=";
 $url.=$link;
-$url.=";tags=";
-$url.=$_POST["tags"];
-$url.=";";
+$url.="&tags=";
+$url.=$tags;
+
 };
 ?>
 <script type="text/javascript">
@@ -345,19 +339,22 @@ $url.=";";
 
   
 var url="<?php echo $url; ?>";
-  $.ajax({                                                                                                                                                                                                        
-    type: 'GET',                                                                                                                                                                                                 
-    url: url,                                                                                                                                              
-  dataType: 'jsonp',                                                                                                                                                                                                
-    success: function() { console.log('Success!');
-     },                                                                                                                                                                                       
-    error: function() { console.log('Uh Oh!'); }                                                                                                                           
-})
+
+ var xhr = new XMLHttpRequest();
+xhr.open('GET',url);
+xhr.onreadystatechange = function () {
+ if (this.status == 200 && this.readyState == 4) {
+   console.log('response: ' + this.responseText);
+   
+ }
+};
+xhr.send();
 
 
 <?php } ?>
 
 </script>
+
 <script type="text/javascript">
 $(".share_modal li").click(function(){
   $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
@@ -365,12 +362,12 @@ $(".share_modal li").click(function(){
 
 
 </script>
-<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+
 </body>
 </html>
 <?php
   // 5. Close database connection
-	if (isset($connection)) {
-	  mysqli_close($connection);
-	}
+  if (isset($connection)) {
+    mysqli_close($connection);
+  }
 ?>

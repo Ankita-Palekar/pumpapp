@@ -1,49 +1,69 @@
-$("#return").click(function(){
-  window.location.href="picker.html";
-})
+$("#back").click(function(){
+window.location.href="picker.html";
+});
 
-$("#home").click(function(){
-  window.location.href="share_ind.html";
-})
+$("#more").click(function(){
+  window.location.href="alt_share_ind.html";
+});
 
-$("#go").click(function(){
-  alert($("#myMail").val());
-  window.location.href="success_indi.html";
-})
+$("#main_page").click(function(){
+
+    var newURL = "http://localhost/pumpapp/index.php";
+    chrome.tabs.create({ url: newURL });
+
+});
+
 
 $.ajax({
   type: 'GET',
- url: "http://localhost/pumpapp/Extension%201%20-%20Copy/get_friends.php",
+ url: "http://localhost/pumpapp-master/Extension%201%20-%20Copy/get_friends.php",
 success:function(data){
   var items=data;
   var myFriends=jQuery.parseJSON(items);
-   function update( message ) {
-      $( "<h4>" ).text( message ).appendTo( "#update" );
-      $( "#update" ).scrollTop( 0 );
+ $(function() {
+    var availableTags = myFriends;
+    function split( val ) {
+      return val.split( /,\s*/ );
     }
-  $(function() {
-    $( "#friends" ).autocomplete({
-      source: myFriends,
-      select: function( event, ui ) {
-        update( ui.item ?
-          ui.item.value:
-          "Nothing selected, input was " + this.value );
-        $(".ui-widget").remove();
-         $("#update").prepend("<h3>Selected Friend:</h3>");
-       $("#update").append("<button id=\"ok\" class=\"btn btn-success\">Share Now!</button>");
-      $("#update").append("<button id=\"back\" class=\"btn btn-danger\">Change User</button>");
-         $("#back").click(function(){
-          window.location.href="share_ind.html";
-         });
-         $("#ok").click(function(){
-          
-          window.location.href="success_indi.html";
-         });
-
-      }
-    });
-  });
-
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
  
+    $( "#friends" )
+      // don't navigate away from the field on tab when selecting an item
+      .bind( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        minLength: 1,
+        source: function( request, response ) {
+          // delegate back to autocomplete, but extract the last term
+          response( $.ui.autocomplete.filter(
+            availableTags, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
 }
+});
+
+$("#go").click(function(){
+  window.location.href="success_indi.html";
 });

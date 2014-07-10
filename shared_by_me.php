@@ -1,3 +1,8 @@
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php"); ?>
+
+<?php confirm_logged_in(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,8 +122,8 @@ margin-right: 20%;
 </div></li>
             <li class="active"><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li><a href="groups_ws.php">My Groups</a></li>
-            <li><a href="archive.php">Archive</a></li>
+            <li><a href="groups_ws2.php">My Groups</a></li>
+            <li><a href="archive.php">Favourites</a></li>
            
         </ul>
         
@@ -133,9 +138,9 @@ margin-right: 20%;
             </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">42</span></a>
+          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">with</span></a>
         </li>
-        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">42</span></a>
+        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">by</span></a>
         </li>
 
         </ul>

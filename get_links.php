@@ -1,4 +1,10 @@
-<?php require_once("db_connection2.php"); ?>
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php");
+?>
+<?php include("sessiontodata.php"); ?>
+<?php confirm_logged_in(); ?>
+<?php $user_id=$ID; ?>
 <?php require_once("get_title.php");?>
 
 <?php
@@ -7,7 +13,7 @@
     
     // Perform Update
 
-    $query="select link_id, link_url from links;";
+    $query="select link_id, link_url from links where user_id={$user_id};";
 
     $result = mysqli_query($connection, $query);
 

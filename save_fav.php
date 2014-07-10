@@ -5,7 +5,7 @@
     $lid=$_REQUEST["lid"];
 
     $query="update links set fav=1 where link_id=";
-    $query.="$lid;";
+    $query.="{$lid}";
 echo $query;
     $result = mysqli_query($connection, $query);
 

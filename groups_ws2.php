@@ -1,15 +1,41 @@
 
 <?php require_once("db_connection2.php");
+ require_once("session.php");
+    require_once("functions.php");
       // include("included_functions.php");
-     if (isset($_GET)){
-        $userid=$_GET["userid"];
-     }else { 
-      $userid=2;
-  }
+     // if (isset($_GET)) {
+     //        $userid=$_GET["user_id"];
+     //      }  else{
+     //        echo "USER AUTHENTICATION FAILED!!!";
+     //      }   
  ?>
+ <?php confirm_logged_in(); ?>
+ <?php include("sessiontodata.php"); ?>
 <?php
+    $userid=$ID;
   // require_once("included_functions.php");
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   if (isset($_POST['create'])) {
     // form was submitted
     $groupname = $_POST["grp_name"];
@@ -22,15 +48,12 @@
       $queryi .= " '{$groupname}',{$admin_id} )";
       $result_set=mysqli_query($connection,$queryi);
       $link1 =  "groups.php" . "?id=" . urlencode($admin_id);
-      redirect_to($link1);
+      //redirect_to($link1);
 
     } else {
       $message = "There were some errors.";
     }
-  } else {
-    $username = "";
-    $message = "Please log in.";
-  }
+  } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -132,11 +155,11 @@ font-weight: bold;
  /* border:1px solid rgba(255,255,255,0.6);*/
   width: 300px;
 
-  
+  margin-left: 200px;
   border-radius: 5px;
-  position: relative;
+  /*position: relative;
   top:-300px;
-  left: 550px;
+  left: 550px;*/
   height: 250px;
 
 
@@ -167,38 +190,74 @@ font-weight: bold;
 
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ><a href="index.html">List</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li class="active"><a href="groups.html">My Groups</a></li>
-            <li><a href="archive.html">Archive</a></li>
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
-                <ul role="menu" class="dropdown-menu">
-                    <li><a href="#">Inbox</a></li>
-                    <li><a href="#">Drafts</a></li>
-                    <li><a href="#">Sent Items</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Trash!</a></li>
-                </ul>
-            </li>
+          <li>  <div class="col-md-6">
+     <button class="btn btn-default plus-sign" data-toggle="modal" title="Add new link" data-target=".add_url_modal">
+        <span class="glyphicon glyphicon-plus-sign">
+       </span>
+      </button>
+
+
+<div class="modal fade add_url_modal" tabindex="+1" role="dialog" >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Save your URL</h4>
+      </div>
+      <div class="modal-body">
+        
+     <form action="index.php" method=POST>
+    
+        <label for="link_url">Put URL here:</label>
+        <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required>
+
+         <label for="tags">Tags (press ENTER/RETURN key after entering tags)</label></br>
+         <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
+    
+        <button type="submit" name="create" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </br> </form>
+      </div>
+     
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div></li>
+            <li ><a href="index.php">List</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li class="active"><a href="groups_ws2.php">My Groups</a></li>
+            <li><a href="archive.php">Favourites</a></li>
+           
         </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="newLogin.html">LogOut</a></li>
+            <li><a href="logout.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
                 <input type="text" placeholder="Search" class="form-control">
             </div>
         </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">with</span></a>
+        </li>
+        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">by</span></a>
+        </li>
+
+        </ul>
     </div>
 </nav>
 
 
 
-<div class="row">
+
+
   <div class="col-sm-2">
     <div class="sidebar-nav">
       <div class="navbar navbar-inverse" role="navigation">
@@ -211,9 +270,9 @@ font-weight: bold;
     
     // Perform Update
 
-    $query="select * from Groups G, group_members M ";
-    $query.="WHERE G.groups_id = M.grp_id ";
-    $query.="AND M.user_id={$userid}";
+    $query="select * from groups G, group_members M WHERE G.groups_id=M.grp_id AND M.user_id={$userid}";
+    // $query.="WHERE ";
+   // echo $query;
     $result = mysqli_query($connection, $query);
 
     if ($result) {
@@ -223,7 +282,7 @@ font-weight: bold;
                $grpid=$groupname["groups_id"];
                $cur_url="groupnum.php?";
                $cur_url.="groups_id={$grpid}";
-               $cur_url.="&user_id={$userid}";
+               // $cur_url.="&user_id={$userid}";
          ?>
         <li class="grpname"><a href="<?php echo $cur_url ?>"><?php echo $groupname["group_name"]; ?> </a></li>
 
@@ -234,7 +293,7 @@ font-weight: bold;
 }
 else echo ("oh no");
 ?>
-             <li><a href="create_groups_ws.php">Create Group <span class="glyphicon glyphicon-plus right"></span</a></li>
+             <li class="active"><a href="#">Create Group <span class="glyphicon glyphicon-plus right"></span</a></li>
              </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -243,12 +302,12 @@ else echo ("oh no");
   <!-- <div class="col-sm-9 well">
    <p> The various groups you are a part of are here.</p>
   </div> -->
-</div> 
+
 
 
 <div id='create' class="col-sm-9 well">
   <h4 class='hh'>CREATE YOUR GROUP:</h4>
-<form action="creategroup.php" method="post">
+<form action="groups_ws2.php" method="post">
     <div class="form-group">
         <!-- <label>Group Name</label> -->
         <input type="text" class="form-control fg" name="grp_name" id="inputEmail" placeholder="Name of group">
@@ -274,6 +333,87 @@ $("li").click(function(){
 });
 
 </script>
+<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 </div>
+
+<?php
+if(isset($_POST["create"])){
+$grp_name=$_POST["grp_name"];
+$users=$_POST["users"];
+$url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=createGroup";
+$url.="&groupName=";
+$url.="{$grp_name}";
+$url.="&AdminID=";
+$url.="{$ID}";
+$url.="&UserIDs=";
+$url.=$_POST["users"];
+};
+
+//echo $url;
+
+?>
+<script type="text/javascript">
+<?php if(isset($_POST["create"])){?> 
+
+$("document").ready(function(){
+  
+var url="<?php echo $url; ?>";
+  $.ajax({                                                                                                                                                                                                        
+    type: 'GET',                                                                                                                                                                                                 
+    url: url,                                                                                                                                              
+    dataType: 'jsonp',                                                                                                                                                                                                
+    success: function() { console.log('Success!');
+      
+
+     },                                                                                                                                                                                       
+    error: function() { console.log('Uh Oh!'); }                                                                                                                           
+})
+
+
+});
+
+</script>
+<?php } ?>
+
+<?php
+if(isset($_POST["create"])){
+  echo $_POST["tags"];
+$link=urlencode($_POST["link_url"]);
+$tags=$_POST["tags"];
+$url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID={$user_id}&linkURL=";
+$url.=$link;
+$url.="&tags=";
+$url.=$tags;
+
+};
+?>
+
+<script type="text/javascript">
+
+<?php if(isset($_POST["create"])){?> 
+
+
+  
+var url="<?php echo $url; ?>";
+
+ var xhr = new XMLHttpRequest();
+xhr.open('GET',url);
+xhr.onreadystatechange = function () {
+ if (this.status == 200 && this.readyState == 4) {
+   console.log('response: ' + this.responseText);
+   
+ }
+};
+xhr.send();
+
+
+<?php } ?>
+
+</script>
+<script type="text/javascript">
+$(".share_modal li").click(function(){
+  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>"); 
+})
+</script>
 </body>
 </html>

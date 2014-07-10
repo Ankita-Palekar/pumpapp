@@ -115,20 +115,27 @@ nav{
 </div></li>
             <li><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li ><a href="groups.html">My Groups</a></li>
+            <li ><a href="groups_ws2.php">My Groups</a></li>
             <li class="active"><a href="archive.php">Favorites</a></li>
                   </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="welcome.php">LogOut</a></li>
+            <li><a href="logout.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
                 <input type="text" placeholder="Search" class="form-control">
             </div>
         </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">with</span></a>
+        </li>
+        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">by</span></a>
+        </li>
+
+        </ul>
     </div>
 </nav>
 

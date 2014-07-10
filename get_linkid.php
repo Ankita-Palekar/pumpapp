@@ -1,14 +1,18 @@
-<?php require_once("db_connection2.php"); ?>
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php"); ?>
+<?php include("sessiontodata.php"); ?>
+
 
 
 <?php
-
+$user_id=$ID;
   if (empty($errors)) {
     
     // Perform Update
 
     $query="select link_id from links where link_url=";
-    $query.="'$url' and user_id=1";
+    $query.="'$url' and user_id={$user_id}";
 
     $result = mysqli_query($connection, $query);
 

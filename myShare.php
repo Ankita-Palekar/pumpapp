@@ -16,17 +16,17 @@ $userid=$ID;
 <body>
 
 
- 
+
 
 <?php
-
   if (empty($errors)) {
     
     // Perform Update
 
-    $query="select * from share_link SL, links L, share S, Groups G ";
-    $query .="WHERE  SL.visited=1 AND L.link_id=S.link_id AND S.share_id=SL.share_id AND S.sharrer_id={$userid} ";
-    $query .="AND S.group_id=G.groups_id ";
+    $query="select * from share where sharrer_id=2;";
+    echo $query;
+    // $query .="WHERE  SL.visited=1 AND L.link_id=S.link_id AND S.share_id=SL.share_id AND S.sharrer_id={$userid} ";
+    // $query .="AND S.group_id=G.groups_id ";
     $output="<ul>";
     $result = mysqli_query($connection, $query);
     
@@ -51,7 +51,7 @@ $userid=$ID;
         
         }else{
 
-            $output="Nothing has been shared";
+            $output="nothing is coming";
         }
         $output .="</ul>";
       echo $output; 

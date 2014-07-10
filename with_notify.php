@@ -1,12 +1,19 @@
 <?php require_once("db_connection2.php"); 
-
-if(isset($_GET)){
-  $userid=$_GET["user_id"];
-}else{
-  $userid=2;
-}
+ require_once("session.php");
+ require_once("functions.php"); ?>
+<?php include("sessiontodata.php"); ?>
+<?php confirm_logged_in(); ?>
+<?php
+$userid=$ID;
+// if(isset($_GET)){
+//   $userid=$_GET["user_id"];
+// }else{
+//   $userid=2;
+// }
 ?>
 
+
+ 
 
  
 
@@ -49,7 +56,11 @@ if(isset($_GET)){
                 $output.="</ul>";
   //echo $query;
   echo $output;
-        }} else {
+        }
+          else{
+            echo "Nothing has been shared";
+          }
+      } else {
         echo "oh no!";
        }
   

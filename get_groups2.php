@@ -1,12 +1,18 @@
-<?php require_once("db_connection2.php"); ?>
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php"); ?>
+<?php include("sessiontodata.php"); ?>
 
 <?php
-
+ confirm_logged_in();
+ ?>
+<?php
+$userid=$ID;
   if (empty($errors)) {
     
     // Perform Update
 
-    $query="select group_name from Groups";
+    $query="select group_name from groups G, group_members M where G.groups_id=M.grp_id AND M.user_id={$userid}";
 
     $result = mysqli_query($connection, $query);
 

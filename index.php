@@ -1,3 +1,14 @@
+<?php
+    require_once("session.php");
+    require_once("functions.php");
+    require_once("db_connection2.php");
+ ?>
+ <?php include("sessiontodata.php"); ?>
+<?php
+ confirm_logged_in();
+ ?>
+
+<?php $user_id=$ID; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,7 +105,7 @@ opacity: 0.7;
         <label for="link_url">Put URL here:</label>
         <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required>
 
-         <label for="tags">Tags</label></br>
+         <label for="tags">Tags (press ENTER/RETURN key after entering tags)</label></br>
          <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
     
         <button type="submit" name="create" class="btn btn-primary">Save</button>
@@ -110,17 +121,17 @@ opacity: 0.7;
 
 
 </div></li>
-            <li class="active"><a href="index.php">List</a></li>
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="groups_ws.php">My Groups</a></li>
-            <li><a href="archive.php">Archive</a></li>
+            <li class="active"><a href="index.php ?>">List</a></li>
+            <li><a href="profile.php ?>">Profile</a></li>
+            <li><a href="groups_ws2.php ?>">My Groups</a></li>
+            <li><a href="archive.php">Favourites</a></li>
            
         </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="welcome.php">LogOut</a></li>
+            <li><a href="logout.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
@@ -128,9 +139,9 @@ opacity: 0.7;
             </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">42</span></a>
+          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">with</span></a>
         </li>
-        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">42</span></a>
+        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">by</span></a>
         </li>
 
         </ul>
@@ -153,7 +164,7 @@ if(r==true){
 var link_id=$(this).parent().parent().attr("data-linkid");
 $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/delete_item.php" ,
+  url:"http://localhost/pumpapp-master/delete_item.php" ,
   data: {lid: link_id },
   //dataType:'jsonp'
   success:function(data){
@@ -181,7 +192,7 @@ if($(this).hasClass("star")){
    $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/delete_fav.php" ,
+  url:"http://localhost/pumpapp-master/delete_fav.php" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);
@@ -192,7 +203,7 @@ else{
    $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/save_fav.php" ,
+  url:"http://localhost/pumpapp-master/save_fav.php" ,
   data: {lid: linkid},
   success:function(data){
     console.log(data);
@@ -211,7 +222,7 @@ if($(this).hasClass("star")){
    $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/delete_fav.php" ,
+  url:"http://localhost/pumpapp-master/delete_fav.php" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);
@@ -222,7 +233,7 @@ else{
    $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/save_fav.php" ,
+  url:"http://localhost/pumpapp-master/save_fav.php" ,
   data: {lid: linkid},
   success:function(data){
     console.log(data);
@@ -245,11 +256,11 @@ if(isset($_POST["create"])){
   echo $_POST["tags"];
 $link=urlencode($_POST["link_url"]);
 $tags=$_POST["tags"];
-$url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL=";
+$url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID={$user_id}&linkURL=";
 $url.=$link;
-$url.=";tags=";
-$url.=$_POST["tags"];
-$url.=";";
+$url.="&tags=";
+$url.=$tags;
+
 };
 ?>
 <script type="text/javascript">
@@ -259,14 +270,16 @@ $url.=";";
 
   
 var url="<?php echo $url; ?>";
-  $.ajax({                                                                                                                                                                                                        
-    type: 'GET',                                                                                                                                                                                                 
-    url: url,                                                                                                                                              
-  dataType: 'jsonp',                                                                                                                                                                                                
-    success: function() { console.log('Success!');
-     },                                                                                                                                                                                       
-    error: function() { console.log('Uh Oh!'); }                                                                                                                           
-})
+
+ var xhr = new XMLHttpRequest();
+xhr.open('GET',url);
+xhr.onreadystatechange = function () {
+ if (this.status == 200 && this.readyState == 4) {
+   console.log('response: ' + this.responseText);
+   
+ }
+};
+xhr.send();
 
 
 <?php } ?>
@@ -275,13 +288,14 @@ var url="<?php echo $url; ?>";
 <script type="text/javascript">
 $(".share_modal li").click(function(){
   $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
+ 
 })
 
 $(".tag").click(function(){
 var id=$(this).parent().parent().attr("data-linkid");
 $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/get_tags.php" ,
+  url:"http://localhost/pumpapp-master/get_tags.php" ,
   data: {id: id},
   success:function(data){
     $("#update_tag").html(data);

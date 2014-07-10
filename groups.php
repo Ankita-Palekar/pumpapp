@@ -1,6 +1,16 @@
+<?php
+    require_once("session.php");
+    require_once("functions.php");
+    require_once("db_connection2.php");
 
-<?php require_once("db_connection2.php");
-      $userid=2;
+ ?>
+<?php confirm_logged_in(); ?>
+<?php include("sessiontodata.php"); ?>
+
+
+
+<?php
+      $userid=$ID;
  ?>
 <?php
   // require_once("included_functions.php");

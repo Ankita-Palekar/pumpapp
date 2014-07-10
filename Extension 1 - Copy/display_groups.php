@@ -6,7 +6,7 @@
     
     // Perform Update
 
-    $query="select group_name from Groups";
+    $query="select group_name from groups;";
 
     $result = mysqli_query($connection, $query);
 

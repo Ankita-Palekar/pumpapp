@@ -6,6 +6,8 @@ $("#save").click(function(){
 });
 
 
+chrome.browserAction.setBadgeBackgroundColor({color:[190, 0, 0, 230]});
+chrome.browserAction.setBadgeText({text:"32"});
 
 
 $("#save_tags").click(function(){
@@ -14,20 +16,20 @@ $("#save_tags").click(function(){
  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
    var  curl = tabs[0].url;  
    var safe_curl=encodeURIComponent(curl);
-   
 var tags=$("input").val();
-var url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL="+safe_curl+";tags="+tags+";";
+var url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID=2&linkURL="+safe_curl+"&tags="+tags;
  $.ajax({ 
     type:'GET',
     url:url,
     //data: max,
     // dataType:'jsonp',
     success:function(data){
-      console.log(data);
+      alert(url);
+      window.location.href="save_tags.html";
     },
     error:function(data){
       console.log("oh no!");
-      window.location.href="save_tags.html";
+      
      }
  });
 });
@@ -46,36 +48,13 @@ $("#main_page").click(function(){
 
 });
 
-$("#remove").click(function(){
-chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-   var  curl = tabs[0].url;  
-   var safe_curl=encodeURIComponent(curl);
-   var userID=1;
-  // alert(curl);
-var url="http://localhost/pumpapp/Extension%201%20-%20Copy/remove.php";
- $.ajax({ 
-    type:'POST',
-    url:url,
-   data:{url: curl, id: userID} ,
-    // dataType:'jsonp',
-    success:function(data){
-      console.log(data);
-
-      window.location.href="removed.html";
-    },
-    error:function(data){
-      console.log("oh no!");
-      window.location.href="changer.html";
-     }
- });
-});
-
-
+$("#back").click(function(){
+window.location.href="picker.html";
 });
 
 $("#shareg").click(function(){
    $.ajax({
-   url: "http://localhost/pumpapp/Extension%201%20-%20Copy/share_with_group.php",
+   url: "/share_with_group.php",
     success: function(data){
         console.log(data);  
           }
@@ -88,7 +67,7 @@ $("#shareg").click(function(){
 
 $("#sharei").click(function(){
 
-window.location.href="share_ind.html";
+window.location.href="alt_share_ind.html";
 
 
 });

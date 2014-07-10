@@ -1,10 +1,11 @@
 <?php require_once("db_connection2.php"); 
-
-$userid=1;
-?>
-
-
- 
+ require_once("session.php");
+ require_once("functions.php"); ?>
+<?php include("sessiontodata.php"); ?>
+<?php
+ confirm_logged_in();
+ ?>
+<?php $userid=$ID; ?>
 
 <?php
 
@@ -45,8 +46,11 @@ $userid=1;
                 $output.="</ul>";
   //echo $query;
   echo $output;
-        }} else {
+        }
+      } 
+        else {
         echo "oh no!";
+       var_dump($errors);
        }
   
  

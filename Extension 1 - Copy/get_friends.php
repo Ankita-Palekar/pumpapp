@@ -1,18 +1,15 @@
-
-
 <?php require_once("db_connection2.php"); ?>
 <?php $userid=1;
 
   if (empty($errors)) {
 //$output=array();
-    $query="select details from gmail_contacts G, users U WHERE G.user_id={$userid} order by emailId asc;";
+    $query="select * from users;";
 
     $result = mysqli_query($connection, $query);
 $name=array();
     if ($result) {
       while($row=mysqli_fetch_assoc($result)){
-           $name[]=$row["emailId"];
-          
+           $name[]=$row["username"]."(".$row["emailId"].")";
         }
       }
       else

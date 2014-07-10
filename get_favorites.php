@@ -1,12 +1,19 @@
-<?php require_once("db_connection2.php"); ?>
-
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php");
+?>
+<?php include("sessiontodata.php"); ?>
+<?php confirm_logged_in(); ?>
+<?php 
+  $user_id=$ID; 
+?>
 <?php
 
   if (empty($errors)) {
     
     // Perform Update
 
-    $query="select link_id, link_url from links where fav=1;";
+    $query="select link_id, link_url from links where fav=1 AND user_id={$user_id} ";
 
     $result = mysqli_query($connection, $query);
 

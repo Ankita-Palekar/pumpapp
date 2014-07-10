@@ -6,7 +6,7 @@
     
     $selected_group=$_POST["id"];
 
-    $query="select groups_id from Groups where group_name like";
+    $query="select groups_id from groups where group_name like";
     $query.="'$selected_group'";
 
     $result = mysqli_query($connection, $query);
@@ -16,7 +16,7 @@
      foreach($result as $value)
      {
       foreach ($value as $show) {
-        $output=$show;
+        $output=(int)$show;
       }
      
    };

@@ -1,8 +1,8 @@
 <?php
 	define("DB_SERVER", "166.62.18.107");
-	define("DB_USER", "pumpapp");
+	define("DB_USER", "pumpapp1");
 	define("DB_PASS", "pumpapp123");
-	define("DB_NAME", "pumpapp");
+	define("DB_NAME", "pumpapp1");
 
   // 1. Create a database connection
   $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);

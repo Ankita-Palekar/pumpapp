@@ -1,12 +1,11 @@
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php");
+?>
+<?php include("sessiontodata.php"); ?>
+<?php confirm_logged_in(); ?>
 <?php 
-require_once("db_connection2.php");
-
-if (isset($_GET)) {
-    $user_id=$_GET["userid"];
-    }
-     else {
-    $user_id=8;  // CHANGE THIS!
-  }
+  $user_id=$ID; 
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,7 +92,7 @@ padding-top: 10px;
 </div></li>
             <li><a href="index.php">List</a></li>
             <li class="active"><a href="profile.php">Profile</a></li>
-            <li><a href="groups.html">My Groups</a></li>
+            <li><a href="groups_ws2.php">My Groups</a></li>
             <li><a href="archive.php">Archive</a></li>
            
         </ul>
@@ -131,13 +130,32 @@ padding-top: 10px;
 
 <div class="information">
 <dl class="dl-horizontal well">
+  <dt id="name">User Name :</dt>
+  <dd id="name">
+    <?php
+    
+      if(empty($errors)){
+        $query="select username from users where user_id=";
+        $query.="{$user_id}";
+        $result = mysqli_query($connection, $query);
+        // $output="<p>";
+        if($result){
+          while ($names=mysqli_fetch_assoc($result)){
+            echo $names["username"];
+      }}
+        else{
+          echo "oh no!";
+        }
+
+    }
+  ?></dd>
   <dt id="email">E-mail ID:</dt>
   <dd id="mail_id">
   	<?php
 		
   		if(empty($errors)){
   			$query="select emailId from users where user_id=";
-  			$query.="'$user_id'";
+  			$query.="{$user_id}";
   			$result = mysqli_query($connection, $query);
   			// $output="<p>";
   			if($result){
@@ -168,8 +186,9 @@ padding-top: 10px;
         
          <?php $i=1;
           	if(empty($errors)){
-        $query="SELECT * from ";
-        $query .="Groups G, group_members M, users U ";
+              $query="";
+        $query .="SELECT * from ";
+        $query .="groups G, group_members M, users U ";
         $query.="WHERE G.groups_id = M.grp_id";
         $query.=" AND M.user_id={$user_id} AND G.Admin_id=U.user_id ";
         
