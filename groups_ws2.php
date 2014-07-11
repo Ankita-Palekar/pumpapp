@@ -320,7 +320,7 @@ else echo ("oh no");
         <label><input type="checkbox"> Remember me</label>
     </div> -->
    <!--  <button type="submit" class="btn btn-primary am">Add Member</button> -->
-    <button type="submit" name="create" class="btn btn-primary cr">Create</button>
+    <button type="submit" name="creategrp" class="btn btn-primary cr">Create</button>
 </form>
 </div>
 <div id="assets">
@@ -337,7 +337,7 @@ $("li").click(function(){
 </div>
 
 <?php
-if(isset($_POST["create"])){
+if(isset($_POST["creategrp"])){
 $grp_name=$_POST["grp_name"];
 $users=$_POST["users"];
 $url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=createGroup";

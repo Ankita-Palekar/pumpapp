@@ -13,9 +13,8 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs</title><!-- 
-	<link rel="stylesheet" type="text/css" href="styleSheet.css">
- --><link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<title>Pump!- Share your URLs</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
 <style type="text/css">
 
@@ -298,12 +297,16 @@ $.ajax({
   url:"http://localhost/pumpapp-master/get_tags.php" ,
   data: {id: id},
   success:function(data){
-    $("#update_tag").html(data);
-
+    $("input").val(data);
+    $("#save_tags_modal").click(function(){
+      $("input").val(" ");
+    });
+   },
+      error:function(){
+        alert("Sorry, could not retreive tags");
       }
 })
 });
-
 
 </script>
 

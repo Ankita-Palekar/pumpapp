@@ -7,12 +7,10 @@
       </div>
       <div class="modal-body">
         
-     <form action="#" method=POST>
-    <div id="update_tag">
-         
-    </div></br>
-        <button type="submit" name="create" class="btn btn-primary">Edit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+     <form action="index.php" method=POST>
+    <input type="text" id="myTags" name="myTags" data-role="tagsinput" placeholder="Edit your tags">
+        <button type="submit" id="save_tags_modal" name="save_tags_modal" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </form>
       </div>
      
@@ -20,3 +18,4 @@
       </div>
     </div>
   </div>
+
