@@ -332,12 +332,11 @@ else echo ("oh no");
      <ul class="well">
     <form action="groupnum.php?groups_id=<?php echo $grp_id; ?>" method=POST>
     
-        <label for="users">Put URL here:</label>
-        <input type="text" class="form-control fg" name="users" id="inputURL" placeholder="URL link" required>
-
+        <label for="inputURL">Put URL here:</label>
+        <input type="text" class="form-control fg" name="inputURL" id="inputURL" placeholder="http://" required>   
        
     
-        <button type="submit" name="sharelink" class="btn btn-primary">Share</button>
+        <button type="submit" id="sharelink" name="sharelink" class="btn btn-primary">Share</button>
       
       </form>
     </ul>
@@ -404,13 +403,31 @@ xhr.send();
 </script>
 
 <script type="text/javascript">
-$(".share_modal li").click(function(){
-  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
-});
 
+$("#sharelink").click(function(){
+  <?php
+ $url=$_POST["inputURL"];
+ echo $user_id;
+ ?>
+var url="<?php echo $url; ?>";
+var me="<?php echo $user_id; ?>";
+// var id="<?php echo $grp_id; ?>";
+
+// var url2="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID="+me+"&groupID="+id+"&LinkID=-1&link_url="+url;
+//  console.log(url2);
+//  $.ajax({
+//   type: 'GET',
+//   url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID="+me+"&groupID="+id+"&LinkID=-1&link_url="+url ,
+//   success:function(data){
+//   console.log(data);
+//     },
+//     error:function(){
+//       alert("no");
+//     }
+// })
+})
 
 </script>
-
 </body>
 </html>
 <?php

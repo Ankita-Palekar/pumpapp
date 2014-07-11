@@ -215,7 +215,7 @@ padding-top: 10px;
       <tr >
         <td> <?php echo $i++; ?> </td>
         <td class="grpname">  <?php echo $groupname["group_name"]; ?>  </td>
-        <td> <?php echo $groupname["emailId"]; ?></td>
+        <td> <?php echo $groupname["username"]; ?></td>
         <td><?php echo "{$count}" ?> </td>
       </tr>
 
