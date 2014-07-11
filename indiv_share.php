@@ -1,21 +1,29 @@
 <?php require_once("db_connection2.php"); 
  require_once("session.php");
- require_once("functions.php"); ?>
+ require_once("functions.php");
+?>
+<?php
+ include("sessiontodata.php"); 
+ ?>
+<?php
+ confirm_logged_in(); 
+?>
+<?php 
+  $user_id=$ID; 
+?>
 
-<?php confirm_logged_in(); ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8"/>
 	<title>Pump!- Share your URLs</title>
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
-    <link href="pusher/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />
 <style type="text/css">
 
 
 body{
-	background: url("waves.jpg");
+	background: url("bg.jpg");
   /*background-color: #D4D4D4;*/
 }
 
@@ -39,7 +47,12 @@ opacity: 0.7;
 .pageContent{
 	border-bottom: 2px solid gray;
 }
-
+.well{
+text-align: center;
+}
+ul{
+  list-style: none;
+}
 .myData{
   padding-left: 200px;
 }
@@ -53,11 +66,6 @@ opacity: 0.7;
     width: 500px;
     height: 500px;
     margin: 0px 0 -40px -60px;
-}
-#notify_content{
-text-align: center;
-margin-left: 20%;
-margin-right: 20%;
 }
 
 
@@ -104,7 +112,7 @@ margin-right: 20%;
         <label for="link_url">Put URL here:</label>
         <input type="text" class="form-control fg" name="link_url" id="inputURL" placeholder="URL link" required>
 
-         <label for="tags">Tags</label></br>
+         <label for="tags">Tags (press ENTER/RETURN key after entering tags)</label></br>
          <input type="text" name="tags" class="form-control fg" value="" data-role="tagsinput" placeholder="Press enter after each tag to add more"/>
     
         <button type="submit" name="create" class="btn btn-primary">Save</button>
@@ -120,18 +128,17 @@ margin-right: 20%;
 
 
 </div></li>
-            <li class="active"><a href="index.php">List</a></li>
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="groups_ws2.php">My Groups</a></li>
+            <li class="active"><a href="index.php ?>">List</a></li>
+            <li><a href="profile.php ?>">Profile</a></li>
+            <li><a href="groups_ws2.php ?>">My Groups</a></li>
             <li><a href="archive.php">Favourites</a></li>
-            <li><a href="indiv_share.php">My Shares</a></li>
-          
+           <li><a href="indiv_share.php">My Shares</a></li>
         </ul>
         
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="welcome.php">LogOut</a></li>
+            <li><a href="logout.php">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">
@@ -147,29 +154,55 @@ margin-right: 20%;
         </ul>
     </div>
 </nav>
+<div class="well"><ul>
+<?php $query="select * FROM individualShareEmails I, links L WHERE I.link_id=L.link_id and I.user_id={$user_id} "; 
 
+		
+	  $result=mysqli_query($connection,$query);
+	   if ($result) {
+        while ($shares=mysqli_fetch_assoc($result)) {
+      ?>
+     
+        <?php  
+               $url=$shares["link_url"];
+               $with=$shares["email_id"];
+         	   $on=$shares["saved_date"];
+		$output="<li>YOU HAVE SHARED THE LINK  <a href=\"{$url}\">  ";
+		$output.=$url;
+    $output.="</a>";
+		$output.=" with   ";
+		$output.=$with;
+		$output.=" on    ";
+		$output.=$on;
+  $output.="</li>";
+		echo $output;
+         ?>
+       
+        <?php } 
+     
+   }
+    
 
-<ul id="notify_content" class="list-group">
-  <?php require_once("by_notify.php");?>
- 
+?>
 </ul>
-
+</div>
 
 
 <div id="assets">
-	<script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
 
 <?php
 if(isset($_POST["create"])){
   echo $_POST["tags"];
 $link=urlencode($_POST["link_url"]);
 $tags=$_POST["tags"];
-$url="http://166.62.18.107:8080/PumpAppWebsevice/REST/webService/addLinkPumpApp;userID=1;linkURL=";
+$url="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=addLinkPumpApp&userID={$user_id}&linkURL=";
 $url.=$link;
-$url.=";tags=";
-$url.=$_POST["tags"];
-$url.=";";
+$url.="&tags=";
+$url.=$tags;
+
 };
 ?>
 <script type="text/javascript">
@@ -179,51 +212,22 @@ $url.=";";
 
   
 var url="<?php echo $url; ?>";
-  $.ajax({                                                                                                                                                                                                        
-    type: 'GET',                                                                                                                                                                                                 
-    url: url,                                                                                                                                              
-  dataType: 'jsonp',                                                                                                                                                                                                
-    success: function() { console.log('Success!');
-     },                                                                                                                                                                                       
-    error: function() { console.log('Uh Oh!'); }                                                                                                                           
-})
+
+ var xhr = new XMLHttpRequest();
+xhr.open('GET',url);
+xhr.onreadystatechange = function () {
+ if (this.status == 200 && this.readyState == 4) {
+   console.log('response: ' + this.responseText);
+   
+ }
+};
+xhr.send();
 
 
 <?php } ?>
 
 </script>
-<script type="text/javascript">
-$(".share_modal li").click(function(){
-  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
-})
-
-$(".tag").click(function(){
-var id=$(this).parent().parent().attr("data-linkid");
-$.ajax({
-  type: 'GET',
-  url:"http://localhost/pumpapp/get_tags.php" ,
-  data: {id: id},
-  success:function(data){
-    $("#update_tag").html(data);
-
-      }
-})
-});
-
-
-</script>
-
+<script src="share_link.js"></script>
 <script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
-<script src="pusher/src/lib/gritter/js/jquery.gritter.min.js"></script>
-<script src="http://js.pusher.com/2.2/pusher.min.js"></script>
-<script src="pusher/src/PusherNotifier.js"></script>
-<script type="text/javascript">
-$(function() {
-  var pusher = new Pusher('e8409a3db150a565692f');
-  var channel = pusher.subscribe('my_notifications');
-  var notifier = new PusherNotifier(channel);
-});
-</script>
-</div>
 </body>
 </html>

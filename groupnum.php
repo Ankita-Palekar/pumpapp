@@ -224,7 +224,7 @@ font-weight: bold;
             <li><a href="profile.php">Profile</a></li>
             <li class="active"><a href="groups_ws2.php">My Groups</a></li>
             <li><a href="archive.php">Favourites</a></li>
-           
+           <li><a href="indiv_share.php">My Shares</a></li>
         </ul>
         
 

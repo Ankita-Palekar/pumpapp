@@ -117,7 +117,8 @@ nav{
             <li><a href="profile.php">Profile</a></li>
             <li ><a href="groups_ws2.php">My Groups</a></li>
             <li class="active"><a href="archive.php">Favorites</a></li>
-                  </ul>
+               <li><a href="indiv_share.php">My Shares</a></li>
+              </ul>
         
 
 
