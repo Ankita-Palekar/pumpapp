@@ -193,7 +193,31 @@ font-weight: bold;
     </div>
   </div>
 
+<div class="modal fade add_mem_modal" tabindex="+1" role="dialog" >
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+  <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">ADD a member</h4>
+      </div>
+      <div class="modal-body">
+        
+     <form action="index.php" method=POST>
+    
+        <label for="users">Put IDs here:</label>
+        <input type="text" class="form-control fg" name="users" id="inputmem" placeholder="IDs" required>
 
+         
+    
+        <button class="btn btn-default" data-toggle="modal" title="Add new link" data-target=".add_mem_modal">ADD</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </form>
+      </div>
+     
+
+      </div>
+    </div>
+  </div>
 
 </div></li>
             <li ><a href="index.php">List</a></li>
@@ -268,7 +292,7 @@ else echo ("oh no");
     <ul class="nav nav-tabs">
       <li class="active"><a href="#mem" data-toggle="tab">MEMBERS</a></li>
       <li><a href="#linkdiv" data-toggle="tab">LINKS shared</a></li>
-      
+       <li><a href="#newlink" data-toggle="tab">share</a></li>
     </ul>
     </div>
 </nav>
@@ -288,7 +312,8 @@ else echo ("oh no");
          }
         ?>
       </ul>
-      
+      <!-- <button id="addmem" class="btn btn-primary">ADD MEMBER</button>
+      <button id="remmem" class="btn btn-primary">REMOVE MEMBER</button> -->
       </div>
  <div class="tab-pane" id="linkdiv">
      <ul class="linkclass well">
@@ -303,6 +328,22 @@ else echo ("oh no");
     </ul>
   </div>
 
+  <div class="tab-pane" id="newlink">
+     <ul class="well">
+    <form action="groupnum.php?groups_id=<?php echo $grp_id; ?>" method=POST>
+    
+        <label for="users">Put URL here:</label>
+        <input type="text" class="form-control fg" name="users" id="inputURL" placeholder="URL link" required>
+
+       
+    
+        <button type="submit" name="sharelink" class="btn btn-primary">Share</button>
+      
+      </form>
+    </ul>
+  </div>
+  
+
  
    
 </div> 
@@ -311,8 +352,15 @@ else echo ("oh no");
   
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<?php  ?>
+
 <script type="text/javascript">
 
+var grpid="<?php echo $grp_id; ?>";
+$("#addmem").click(function(){
+
+
+});
 </script>
 <?php
   // 4. Release returned data
