@@ -155,6 +155,7 @@ opacity: 0.7;
 <div id="assets">
 	<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script src="assets/cookie/jquery.cookie.js"></script>
 <script type="text/javascript">
 
 $(".trash").click(function(){
@@ -285,10 +286,6 @@ xhr.send();
 
 </script>
 <script type="text/javascript">
-$(".share_modal li").click(function(){
-  $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"index.php\">View Links</a>");
- 
-})
 
 $(".tag").click(function(){
 var id=$(this).parent().parent().attr("data-linkid");
@@ -307,9 +304,10 @@ $.ajax({
       }
 })
 });
-
+var user="<?php echo $user_id; ?>";
+$.cookie("user",user);
 </script>
-
+<script src="share_link.js"></script>
 <script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 </div>
 </body>

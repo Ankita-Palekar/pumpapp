@@ -214,9 +214,9 @@ font-weight: bold;
             </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">42</span></a>
+          <li><a href="shared_with_me.php"><span class="glyphicon glyphicon-import"></span><span class="badge">with</span></a>
         </li>
-        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">42</span></a>
+        <li><a href="shared_by_me.php"><span class="glyphicon glyphicon-export"></span><span class="badge">by</span></a>
         </li>
 
         </ul>
@@ -296,7 +296,7 @@ else echo ("oh no");
       
       while ($link=mysqli_fetch_row($resultlink)) {
      ?>
-        <li><a href=" <?php echo $link[5]; ?>"> <?php echo $link[5]; ?> </a></li>
+        <li><a href=" <?php echo $link[7]; ?>"> <?php echo $link[7]; ?> </a></li>
      <?php 
       }
      ?>

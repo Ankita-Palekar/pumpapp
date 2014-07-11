@@ -12,29 +12,27 @@ $userid=$ID;
     
     // Perform Update
 
-    $query="select group_name from groups G, group_members M where G.groups_id=M.grp_id AND M.user_id={$userid}";
+    $query="select G.group_name, G.groups_id from groups G, group_members M where G.groups_id=M.grp_id AND M.user_id={$userid}";
 
     $result = mysqli_query($connection, $query);
 
     if ($result) {
 
-      foreach($result as $value)
-      {
-     
-        foreach ($value as $item) { 
+      while($item=mysqli_fetch_array($result)){
           // SESSION["message"] = "Page updated.";
-          $output="<li><button class=\"btn btn-default btn-xs\">";
-          $output.=$item;
+          $output="<li><button class=\"btn btn-default btn-xs\" data-gid=";
+          $output.=$item["groups_id"];
+          $grpid=$item["groups_id"];
+          $output.=">";
+          $output.=$item["group_name"];
           //$output.="<span class=\"badge right\">25</span>";
-          $output.="</button>-<a href=\"#\">View Members</a></li></br>";
+          $output.="</button>-<a href=\"groupnum.php?groups_id={$grpid}\">View members & links</a></li></br>";
           echo $output;
        }
-     }
+     
    }
     else {
-      // Failure
-       //  $_SESSION["message"] = "Page update failed.";
-         //echo "failer";
+     alert("could not fetch groups. Please try later.");
        }
 }
 else echo ("oh no");
