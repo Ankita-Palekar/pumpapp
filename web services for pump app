@@ -30,3 +30,7 @@ http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotific
 9 sharing link withindividual without making a group 
 
 http://localhost/pumpappwebservice/REST.php?action=shareWithIndividual&link_id=1&sharrer_id=2&emailIds=abg@def.com
+
+
+10.web servic to edit tags 
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=updateLinkTagsNotes&link_id=2&tags=5
