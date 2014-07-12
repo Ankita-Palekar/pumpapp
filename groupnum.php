@@ -407,7 +407,7 @@ xhr.send();
 
 $(".unshare").click(function(){
   var shareid=$(this).parent().attr("data-shareid");
-  var myUri="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=unshareLink&shareid="+shareid;
+  var myUri="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=unshareLinkGroup&shareid="+shareid;
   $.ajax({
   type: 'GET',
   url:myUri ,
