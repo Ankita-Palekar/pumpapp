@@ -321,7 +321,7 @@ else echo ("oh no");
       
       while ($link=mysqli_fetch_row($resultlink)) {
      ?>
-        <li><a href=" <?php echo $link[7]; ?>"> <?php echo $link[7]; ?> </a></li>
+        <li data-shareid="<?php echo $link[0] ?>"><a href=" <?php echo $link[7]; ?>"> <?php echo $link[7]; ?> </a> ||   <button class="btn btn-xs btn-danger unshare">Unshare</button></li>
      <?php 
       }
      ?>
@@ -404,28 +404,26 @@ xhr.send();
 
 <script type="text/javascript">
 
-$("#sharelink").click(function(){
-  <?php
- $url=$_POST["inputURL"];
- echo $user_id;
- ?>
-var url="<?php echo $url; ?>";
-var me="<?php echo $user_id; ?>";
-// var id="<?php echo $grp_id; ?>";
 
-// var url2="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID="+me+"&groupID="+id+"&LinkID=-1&link_url="+url;
-//  console.log(url2);
-//  $.ajax({
-//   type: 'GET',
-//   url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID="+me+"&groupID="+id+"&LinkID=-1&link_url="+url ,
-//   success:function(data){
-//   console.log(data);
-//     },
-//     error:function(){
-//       alert("no");
-//     }
-// })
+$(".unshare").click(function(){
+  var shareid=$(this).parent().attr("data-shareid");
+  var myUri="";
+  $.ajax({
+  type: 'GET',
+  url:myUri ,
+  data: {id: id},
+  success:function(data){
+    alert("successfully unshared from group!");
+
+      }
 })
+
+
+})
+
+
+
+
 
 </script>
 </body>
