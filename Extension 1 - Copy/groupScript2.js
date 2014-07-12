@@ -11,16 +11,19 @@ var data="Success";
       $("button").click(function(){
      var max=$(this).attr("id");
      alert(max);
+     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+   var  curl = tabs[0].url;  
+   var safe_curl=encodeURIComponent(curl);
      $(this).replaceWith("<button type=\"button\" class=\"done_share btn btn-labeled btn-success\"><span class=\"btn-label\"><i class=\"glyphicon glyphicon-ok\"></i></span>Shared</button>");
     $.ajax({
-          url: "http://localhost/pumpapp-master/Extension%201%20-%20Copy/share_with_group.php",
+          url: "/share_with_group.php",
        type: "POST",
            data:{id: max},
        success: function(data){
           var link_id=2;
               var id=data;
              alert(id);
-              var uri="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID=2&groupID="+Number(id)+"&LinkID="+Number(link_id);
+              var uri="http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=sharedNotification&notifiyersID=2&groupID="+Number(id)+"&LinkID=-1&link_url="+safe_curl;
               var safe_uri=encodeURIComponent(uri);
               console.log(uri);
               $.ajax({
@@ -41,6 +44,7 @@ var data="Success";
            }
     
      });
+  });
    });
 
 }

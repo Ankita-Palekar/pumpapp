@@ -164,7 +164,7 @@ if(r==true){
 var link_id=$(this).parent().parent().attr("data-linkid");
 $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp-master/delete_item.php" ,
+  url:"/delete_item.php" ,
   data: {lid: link_id },
   //dataType:'jsonp'
   success:function(data){
@@ -192,7 +192,7 @@ if($(this).hasClass("star")){
    $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp-master/delete_fav.php" ,
+  url:"/delete_fav.php" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);
@@ -201,9 +201,10 @@ if($(this).hasClass("star")){
 }
 else{
    $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
+   var user_id="<?php echo $user_id; ?>";
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp-master/save_fav.php" ,
+  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0" ,
   data: {lid: linkid},
   success:function(data){
     console.log(data);
@@ -233,7 +234,7 @@ else{
    $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp-master/save_fav.php" ,
+  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0" ,
   data: {lid: linkid},
   success:function(data){
     console.log(data);
@@ -294,8 +295,16 @@ $.ajax({
   url:"http://localhost/pumpapp-master/get_tags.php" ,
   data: {id: id},
   success:function(data){
-    $("input").val(data);
+    var tagUpdate=$("input").val(data);
     $("#save_tags_modal").click(function(){
+      alert(tagUpdate);
+      $.ajax({
+        type: 'GET',
+        url: "http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=updateLinkTagsNotes&link_id="+id+"&tags="+tagUpdate,
+        success:function(data){
+          console.log("Tags Updated!");
+        }
+      })
       $("input").val(" ");
     });
    },
