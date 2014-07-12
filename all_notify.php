@@ -49,7 +49,7 @@
         }
       } 
         else {
-        echo "oh no!";
+        echo "<h3>No notifications Yet</h3>";
        var_dump($errors);
        }
   
@@ -84,7 +84,7 @@ if ($result2) {
   //echo $query;
   echo $output2;
         } else {
-        echo "oh no!";
+        echo "<h5>No notifications Yet</h5>";
        }
   
  
