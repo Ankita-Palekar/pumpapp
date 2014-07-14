@@ -23,7 +23,7 @@ $userid=$ID;
     
     // Perform Update
 
-    $query="select * from share where sharrer_id=2;";
+    $query="select * from share where sharrer_id={$userid};";
     echo $query;
     // $query .="WHERE  SL.visited=1 AND L.link_id=S.link_id AND S.share_id=SL.share_id AND S.sharrer_id={$userid} ";
     // $query .="AND S.group_id=G.groups_id ";
