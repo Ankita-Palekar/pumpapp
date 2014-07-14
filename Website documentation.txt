@@ -1,0 +1,56 @@
+DOCUMENTATION for PUMP
+
+commonly used functions-   confirm_query()- confirms if query worked without error
+confirm_logged_in()- checks session to see if user is logged in
+
+welcome.php: this is the welcome page. Has links to the signup page and the login page.
+
+login.php: the 'submit' button is the SIGN IN button at the bottom of the form.
+$query2- get all info about user if emailId entered by user exists in the database
+save sessions if info entered by user is correct
+hit web service
+redirect to index.php
+
+index.php:
+
+createGroup.php:  shows the groups which the user is a member of.
+$queryi -insert data entered by user in create group field
+$query  -get all info about the groups which the user is a member of 
+
+verifier.php  : if user clicks on link to verify, redirect to this page.
+$url is the link to the web service
+
+profile.php: basic info about user
+
+with_notify.php: details about all the links that have been shared in the group which the user is a member of.
+by_notify.php: details about all the links shared by the user in his groups
+
+groupnum.php: details about all the members of the group, all the links shared in the group, and an option to share another link------takes groups_id as parameter
+
+create_groups_ws.php: to create a group. creator is automatically assigned as admin
+
+sessiontodata.php: saves the user-id available in the sessions into a temporary variable for every page's use.
+
+get_groups2.php: get all the groups which the user is a member of
+get_links.php: get all the links saved by the user
+index.php -includes get_links.php
+get_favorites.php : get all the links saved as favourites by  the user
+archive.php-includes get_favourites^
+logout.php: destroy sessions
+
+
+attack.html:for testing the push notification.
+
+
+tags_modal.php:contains the code for the modal which displays options to edit tags
+
+
+share_link.js:the script file for sharing any saved link directly with a group.
+
+
+
+
+
+REMAINING:
+add or remove admins
+integrate google, fb, etc. APIs

@@ -1,0 +1,52 @@
+Chrome Extension for Pump App:
+The chrome extension does not support any server side languages like php. So all the functionalities had to be implemented by the recurring use of javascript and ajax calls.
+The following pages are included in the extension:
+
+1. Picker.html: This page is the opening page which the user sees. It gives the user 5 options.
+	a.Save to own Links: To save the current URL into the users own links.
+	b.Share With Group: To share the link directly with a group a person is 	  a part of.
+	c.Share With Individual: To share the link directly with another user.
+	d.View Notifications: To view any notifications.
+	e.Go to Home Page: To open a new tab in Chrome to go to user's home page.
+
+2. save.html: This comes on click of save to own links, with options to add tags and notes.
+
+3.save_tags.html: This is the save succesful page.
+
+4.share_with_group.html: This page comes on the clicking share with group. This has buttons for various groups the person is in. On clicking this, the link is instantly shared.
+
+5.share_with_individual.html: This page is needed to share with an individual. It has autocomplete functionality to help find your friends.
+
+6.notify.html: This page carries all the notifications which are updated from the database as anybody shares a link with the user or a friend views a link shared by a user.
+
+CSS files(For styling)
+1.myStyles.css: to give a body layout.
+2.loading.css: for the loader.
+
+MANIFEST.JSON: This file is needed for setting the extension basic properties like first page, icon etc.
+
+
+Due to no inline execution in extensions, javascript files needed to be created separatedly.
+
+Script files:
+1.myScript.js: for multiple functionalities related to user.
+2.groupScript2.js: for functionalities related to groups.
+3.myFriends.js: To retreive friends and share on click.
+4.background.js: Required for the extension's working.
+
+
+PHP files:
+Many php files are used throughout which are hit using ajax requests via the javascript code. Many web services have also been used, which again required ajax to be accessed.
+
+The php files carry queries and their names are self explanatory.
+
+
+External Functions:
+1.Bootstrap: For designing and elements.
+2.Bootstrap tags input: For tags in Links.
+3.Loading header.
+4.JQuery UI for autocomplete.
+5.JQuery
+
+
+Yet to implement: Sessions for each user logged in.
