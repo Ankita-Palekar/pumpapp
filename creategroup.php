@@ -311,6 +311,8 @@ else echo ("oh no");
 <div id="assets">
     <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+
+<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $("li").click(function(){
     $(this).siblings(".active").removeClass("active");
@@ -318,7 +320,6 @@ $("li").click(function(){
 });
 
 </script>
-<script src="assets/bootstrap-tagsinput.min.js" type="text/javascript"></script>
 </div>
 
 <?php
@@ -334,7 +335,6 @@ $url.="&UserIDs=";
 $url.=$_POST["users"];
 
 };
-
 
 ?>
 <script type="text/javascript">
@@ -356,9 +356,9 @@ var url="<?php echo $url; ?>";
 
 
 });
-
-</script>
 <?php } ?>
+</script>
+
 
 <?php
 if(isset($_POST["create"])){
