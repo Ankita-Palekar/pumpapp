@@ -11,7 +11,11 @@ save sessions if info entered by user is correct
 hit web service
 redirect to index.php
 
-index.php:
+index.php:The home page for the user.Displays all the links saved by the user.It gives for options with each link:
+	favorites- used to add to favorites
+	delete- used to delete from links
+	edit tags- used to edit tags
+	share with group-opens a modal where you choose 		which group you want to share the chosen link 		with.
 
 createGroup.php:  shows the groups which the user is a member of.
 $queryi -insert data entered by user in create group field
@@ -33,6 +37,7 @@ sessiontodata.php: saves the user-id available in the sessions into a temporary 
 
 get_groups2.php: get all the groups which the user is a member of
 get_links.php: get all the links saved by the user
+
 index.php -includes get_links.php
 get_favorites.php : get all the links saved as favourites by  the user
 archive.php-includes get_favourites^
