@@ -37,3 +37,8 @@ http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=updateLinkTag
 
 for verifying users 
 http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=varifySignedUsers&emailID=abc@def.com&token=ewtyetweye352342532dsgfdr232dfgsdf2323
+
+
+for unsharing the lin k
+http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=unshareLinkGroup&shareid=6
+
