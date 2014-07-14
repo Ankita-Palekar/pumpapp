@@ -3,7 +3,7 @@ DOCUMENTATION for PUMP
 commonly used functions-   confirm_query()- confirms if query worked without error
 confirm_logged_in()- checks session to see if user is logged in
 
-welcome.php: this is the welcome page. Has links to the signup page and the login page.
+index.html: this is the welcome page. Has links to the signup page and the login page.
 
 login.php: the 'submit' button is the SIGN IN button at the bottom of the form.
 $query2- get all info about user if emailId entered by user exists in the database

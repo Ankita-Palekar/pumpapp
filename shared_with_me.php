@@ -132,7 +132,7 @@ margin-right: 20%;
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="welcome.php">LogOut</a></li>
+            <li><a href="index.html">LogOut</a></li>
         </ul>
         <form role="search" class="navbar-form navbar-right">
             <div class="form-group">

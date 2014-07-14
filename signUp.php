@@ -83,7 +83,7 @@ Share your URLs</small></h1>
         <label for="password">Password:</label>
         <input type="password" name="password"  placeholder="Password" required></br></br>
           <button type="submit" name="submit" id="sign_up" class="btn a2 btn-default btn-success">Sign Up</button>
-     <button id="home" class="btn btn-danger" onclick="location.href='welcome.php'">Home Page</button>
+     <button id="home" class="btn btn-danger" onclick="location.href='index.html'">Home Page</button>
         </form>
 
     </div>
