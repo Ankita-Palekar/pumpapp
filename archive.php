@@ -1,3 +1,12 @@
+<?php require_once("db_connection2.php"); 
+ require_once("session.php");
+ require_once("functions.php");
+?>
+<?php include("sessiontodata.php"); ?>
+<?php confirm_logged_in(); ?>
+<?php 
+  $user_id=$ID; 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -187,10 +196,11 @@ else{
 $(".star").click(function(){
 var k=confirm("Surely remove from favorites?");
   if(k==true){
+    var user_id="<?php echo $user_id; ?>"
     var linkid=$(this).parent().parent().attr("data-linkid");
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp/delete_fav.php" ,
+  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);

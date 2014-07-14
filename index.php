@@ -187,12 +187,14 @@ else{
 
 $(".star").click(function(){
   var linkid=$(this).parent().parent().attr("data-linkid");
+   var user_id="<?php echo $user_id; ?>";
+ 
   $(this).toggleClass("star").toggleClass("ok");
 if($(this).hasClass("star")){
    $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
    $.ajax({
   type: 'GET',
-  url:"/delete_fav.php" ,
+  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=1" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);
@@ -201,13 +203,15 @@ if($(this).hasClass("star")){
 }
 else{
    $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
-   var user_id="<?php echo $user_id; ?>";
-   $.ajax({
+    $.ajax({
   type: 'GET',
   url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0" ,
   data: {lid: linkid},
   success:function(data){
     console.log(data);
+     },
+     error:function(){
+      alert("error");
      }
 })
 }
@@ -223,7 +227,7 @@ if($(this).hasClass("star")){
    $(this).html("<span class=\"glyphicon glyphicon-star\"></span>");
    $.ajax({
   type: 'GET',
-  url:"http://localhost/pumpapp-master/delete_fav.php" ,
+  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0" ,
   data: {lid: linkid},
   success:function(data){
   console.log(data);
@@ -231,10 +235,11 @@ if($(this).hasClass("star")){
 })
 }
 else{
+  console.log("http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0");
    $(this).html("<span class=\"glyphicon glyphicon-ok\"></span>"); 
    $.ajax({
   type: 'GET',
-  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=0" ,
+  url:"http://166.62.18.107/WebServices/pumpappwebservice/REST.php?action=linkFavourite&user_id="+user_id+"&link_id="+linkid+"&fav=1" ,
   data: {lid: linkid},
   success:function(data){
     console.log(data);

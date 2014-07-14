@@ -343,6 +343,7 @@ $url.=$_POST["users"];
 $("document").ready(function(){
   
 var url="<?php echo $url; ?>";
+alert(url);
   $.ajax({                                                                                                                                                                                                        
     type: 'GET',                                                                                                                                                                                                 
     url: url,                                                                                                                                              

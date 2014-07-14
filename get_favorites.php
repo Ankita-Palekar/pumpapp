@@ -1,12 +1,4 @@
-<?php require_once("db_connection2.php"); 
- require_once("session.php");
- require_once("functions.php");
-?>
-<?php include("sessiontodata.php"); ?>
-<?php confirm_logged_in(); ?>
-<?php 
-  $user_id=$ID; 
-?>
+
 <?php
 
   if (empty($errors)) {
