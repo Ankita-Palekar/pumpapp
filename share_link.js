@@ -7,7 +7,7 @@ $(".share").click(function(){
 
 
 $(".share_modal li button").click(function(){
- // $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"groups_ws2.php\">View Links</a>");
+ // $(this).html("<span class=\"label label-success\">Successfully Shared!</span>      <a href=\"createGroup.php\">View Links</a>");
 var id=$(this).attr("data-gid");
 var lid=$.cookie("picked_link_id");
 var me=$.cookie("user");

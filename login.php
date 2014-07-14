@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-  <title>PUMP!- Share your URLs-Sign In</title>
+  <title>PUMP!-Sign In</title>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 <style type="text/css">
 
@@ -96,12 +96,12 @@ $pw=$_POST["password"];
     confirm_query($result2);
     if ($usid=mysqli_fetch_assoc($result2)) {
       $userid=$usid["user_id"];
-    }
+    
   
      $_SESSION["emailId"]=$id;
      $_SESSION["user_id"]=$userid;
      // $_SESSION["user_id"]=$admin2["0"];
- //      $url="groups_ws2.php?user_id=";
+ //      $url="createGroup.php?user_id=";
  //      $url.=$admin2["0"];
  //      redirect_to($url);
                 
@@ -110,7 +110,7 @@ $url.=urlencode($id);
 $url.="&password=";
 $url.=urlencode($pw);
 
-}
+}}
 
 ?>
 <script type="text/javascript" src="jquery.js"></script>

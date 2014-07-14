@@ -27,7 +27,7 @@ $output="";
 <html>
 <head>
 <meta charset="utf-8"/>
-    <title>Pump!- Share your URLs</title>
+    <title>Pump!- My groups</title>
    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 <style type="text/css">
 
@@ -222,7 +222,7 @@ font-weight: bold;
 </div></li>
             <li ><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li class="active"><a href="groups_ws2.php">My Groups</a></li>
+            <li class="active"><a href="createGroup.php">My Groups</a></li>
             <li><a href="archive.php">Favourites</a></li>
            <li><a href="indiv_share.php">My Shares</a></li>
         </ul>
@@ -279,7 +279,7 @@ font-weight: bold;
 }
 else echo ("oh no");
 ?>
-             <li><a href="groups_ws2.php">Create Group <span class="glyphicon glyphicon-plus right"></span></a></li>
+             <li><a href="createGroup.php">Create Group <span class="glyphicon glyphicon-plus right"></span></a></li>
              </ul>
         </div>
       </div></div></div>

@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs</title>
+	<title>Pump!- Share with individual</title>
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
 <style type="text/css">
@@ -130,7 +130,7 @@ ul{
 </div></li>
             <li class="active"><a href="index.php ?>">List</a></li>
             <li><a href="profile.php ?>">Profile</a></li>
-            <li><a href="groups_ws2.php ?>">My Groups</a></li>
+            <li><a href="createGroup.php ?>">My Groups</a></li>
             <li><a href="archive.php">Favourites</a></li>
            <li><a href="indiv_share.php">My Shares</a></li>
         </ul>

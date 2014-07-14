@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs</title>
+	<title>Pump!- Links shared with users</title>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
     <link href="pusher/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />
@@ -122,7 +122,7 @@ margin-right: 20%;
 </div></li>
             <li class="active"><a href="index.php">List</a></li>
             <li><a href="profile.php">Profile</a></li>
-            <li><a href="groups_ws2.php">My Groups</a></li>
+            <li><a href="createGroup.php">My Groups</a></li>
             <li><a href="archive.php">Archive</a></li>
            
         </ul>

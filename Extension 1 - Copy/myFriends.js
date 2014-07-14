@@ -3,7 +3,7 @@ window.location.href="picker.html";
 });
 
 $("#more").click(function(){
-  window.location.href="alt_share_ind.html";
+  window.location.href="share_with_individual.html";
 });
 
 $("#main_page").click(function(){

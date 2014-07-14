@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs</title>
+	<title>Pump!- Links shared with you</title>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
    <link href="pusher/src/lib/gritter/css/jquery.gritter.css"rel="stylesheet" type="text/css" />

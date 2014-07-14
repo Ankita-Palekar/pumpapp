@@ -4,8 +4,8 @@
 ?>
 <?php include("sessiontodata.php"); ?>
 <?php confirm_logged_in(); ?>
-<?php $user_id=$ID; ?>
-<?php require_once("get_title.php");?>
+<?php $user_id=$ID; 
+// require_once("get_title.php");?>
 
 <?php
 

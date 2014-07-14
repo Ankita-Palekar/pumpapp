@@ -69,7 +69,7 @@ $("#shareg").click(function(){
 
 $("#sharei").click(function(){
 
-window.location.href="alt_share_ind.html";
+window.location.href="share_with_individual.html";
 
 
 });

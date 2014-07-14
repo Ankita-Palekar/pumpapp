@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-	<title>Pump!- Share your URLs</title><!-- 
+	<title>Pump!- Modal</title><!-- 
 	<link rel="stylesheet" type="text/css" href="styleSheet.css">
  --><link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-tagsinput.css">
